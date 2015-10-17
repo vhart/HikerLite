@@ -1,0 +1,32 @@
+PODS:
+  - Bolts/Tasks (1.3.0)
+  - LiquidFloatingActionButton (0.1.1)
+  - Parse (1.9.0):
+    - Bolts/Tasks (>= 1.3.0)
+  - ParseUI (1.1.6):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
+
+DEPENDENCIES:
+  - LiquidFloatingActionButton (from `https://github.com/yoavlt/LiquidFloatingActionButton.git`,
+    branch `swift-2.0`)
+  - Parse
+  - ParseUI (~> 1.1)
+
+EXTERNAL SOURCES:
+  LiquidFloatingActionButton:
+    :branch: swift-2.0
+    :git: https://github.com/yoavlt/LiquidFloatingActionButton.git
+
+CHECKOUT OPTIONS:
+  LiquidFloatingActionButton:
+    :commit: 6c2a30a548d1f44e78b54571e616d637c92b5206
+    :git: https://github.com/yoavlt/LiquidFloatingActionButton.git
+
+SPEC CHECKSUMS:
+  Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
+  LiquidFloatingActionButton: dcdae1e59eb07eccbf60c027001a4d6731c345c9
+  Parse: 712efbc476d4f47b0f96b70db7e53101575753aa
+  ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
+
+COCOAPODS: 0.38.2
