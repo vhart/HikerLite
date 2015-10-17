@@ -6,7 +6,6 @@
 //  Copyright © 2015 Elber Carneiro. All rights reserved.
 //
 
-#import "PFUser.h"
 #import "GJEntry.h"
 
 @interface GJOutings : PFObject <PFSubclassing>
