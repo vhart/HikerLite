@@ -16,6 +16,9 @@
 		C7A6EAD71BD2E59E0064BD4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A6EAD51BD2E59E0064BD4A /* LaunchScreen.storyboard */; };
 		C7A6EAE21BD2E59F0064BD4A /* HikerLiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAE11BD2E59F0064BD4A /* HikerLiteTests.m */; };
 		C7A6EAED1BD2E59F0064BD4A /* HikerLiteUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAEC1BD2E59F0064BD4A /* HikerLiteUITests.m */; };
+		C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAFC1BD2EBD80064BD4A /* GJOutings.m */; };
+		C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */; };
+		C7A6EB021BD2EECE0064BD4A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,11 @@
 		C7A6EAE81BD2E59F0064BD4A /* HikerLiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HikerLiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A6EAEC1BD2E59F0064BD4A /* HikerLiteUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HikerLiteUITests.m; sourceTree = "<group>"; };
 		C7A6EAEE1BD2E59F0064BD4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7A6EAFB1BD2EBB90064BD4A /* GJOutings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJOutings.h; sourceTree = "<group>"; };
+		C7A6EAFC1BD2EBD80064BD4A /* GJOutings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJOutings.m; sourceTree = "<group>"; };
+		C7A6EAFD1BD2EBD80064BD4A /* GJEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJEntry.h; sourceTree = "<group>"; };
+		C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJEntry.m; sourceTree = "<group>"; };
+		C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7A6EB021BD2EECE0064BD4A /* CoreLocation.framework in Frameworks */,
 				B7711B1F931201E40D1551B8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +95,7 @@
 		10491F166C7E17D64159B238 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */,
 				A35CDD57FC026BC52468D2A5 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -103,6 +113,7 @@
 		C7A6EABB1BD2E59E0064BD4A = {
 			isa = PBXGroup;
 			children = (
+				C7A6EAFA1BD2EAF80064BD4A /* Parse */,
 				C7A6EAC61BD2E59E0064BD4A /* HikerLite */,
 				C7A6EAE01BD2E59E0064BD4A /* HikerLiteTests */,
 				C7A6EAEB1BD2E59F0064BD4A /* HikerLiteUITests */,
@@ -162,6 +173,17 @@
 				C7A6EAEE1BD2E59F0064BD4A /* Info.plist */,
 			);
 			path = HikerLiteUITests;
+			sourceTree = "<group>";
+		};
+		C7A6EAFA1BD2EAF80064BD4A /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				C7A6EAFB1BD2EBB90064BD4A /* GJOutings.h */,
+				C7A6EAFC1BD2EBD80064BD4A /* GJOutings.m */,
+				C7A6EAFD1BD2EBD80064BD4A /* GJEntry.h */,
+				C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,8 +370,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */,
 				C7A6EACF1BD2E59E0064BD4A /* ViewController.m in Sources */,
 				C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */,
+				C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */,
 				C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

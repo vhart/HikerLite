@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#import "GJEntry.h"
+#import "GJOutings.h"
+
 
 @interface AppDelegate ()
 
@@ -16,6 +20,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [Parse setApplicationId:@"NU8WRcLcfFleATEjAsRtTxoeZTwWPQp6b5gWhm9d" clientKey:@"XBPTDhNPb4oeD6ZkABTgrVYD9WXlkHhNrKMUMMgP"];
+    
+   
+    [GJOutings registerSubclass];
+    [GJEntry registerSubclass];
+
+    
     // Override point for customization after application launch.
     return YES;
 }
