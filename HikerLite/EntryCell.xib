@@ -7,25 +7,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="entryCellIdentifier" reuseIdentifier="entryCellIdentifier" id="6Sl-ep-OME" customClass="EntryCell">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="214"/>
+            <rect key="frame" x="0.0" y="0.0" width="440" height="310"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="214"/>
+                <rect key="frame" x="0.0" y="0.0" width="440" height="310"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RsZ-KV-rRJ">
-                        <rect key="frame" x="16" y="32" width="568" height="118"/>
+                        <rect key="frame" x="16" y="32" width="408" height="198"/>
                         <animations/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flm-wS-h5F">
-                        <rect key="frame" x="16" y="32" width="568" height="118"/>
+                        <rect key="frame" x="16" y="32" width="408" height="198"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="169" translatesAutoresizingMaskIntoConstraints="NO" id="5yY-sq-Umm">
-                        <rect key="frame" x="16" y="32" width="568" height="118"/>
+                        <rect key="frame" x="16" y="32" width="408" height="198"/>
                         <animations/>
                     </view>
                 </subviews>
@@ -34,10 +34,10 @@
             </view>
             <animations/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="5yY-sq-Umm" secondAttribute="bottom" constant="64" id="64O-w3-Ajs"/>
-                <constraint firstAttribute="bottom" secondItem="Flm-wS-h5F" secondAttribute="bottom" constant="64" id="7Xy-lG-vBM"/>
+                <constraint firstAttribute="bottom" secondItem="5yY-sq-Umm" secondAttribute="bottom" constant="80" id="64O-w3-Ajs"/>
+                <constraint firstAttribute="bottom" secondItem="Flm-wS-h5F" secondAttribute="bottom" constant="80" id="7Xy-lG-vBM"/>
                 <constraint firstItem="5yY-sq-Umm" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="FNP-N3-26K"/>
-                <constraint firstAttribute="bottom" secondItem="RsZ-KV-rRJ" secondAttribute="bottom" constant="64" id="U4R-KG-qqj"/>
+                <constraint firstAttribute="bottom" secondItem="RsZ-KV-rRJ" secondAttribute="bottom" constant="80" id="U4R-KG-qqj"/>
                 <constraint firstItem="RsZ-KV-rRJ" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="XjJ-Om-uEJ"/>
                 <constraint firstItem="RsZ-KV-rRJ" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="dvH-m4-Wda"/>
                 <constraint firstAttribute="trailing" secondItem="5yY-sq-Umm" secondAttribute="trailing" constant="16" id="edC-re-oks"/>
@@ -47,13 +47,13 @@
                 <constraint firstItem="Flm-wS-h5F" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="oB0-Af-5gv"/>
                 <constraint firstAttribute="trailing" secondItem="Flm-wS-h5F" secondAttribute="trailing" constant="16" id="ufw-6X-M1Y"/>
             </constraints>
-            <size key="customSize" width="600" height="214"/>
+            <size key="customSize" width="440" height="310"/>
             <connections>
                 <outlet property="descriptionLabel" destination="Flm-wS-h5F" id="bLx-Qv-KAF"/>
                 <outlet property="photoView" destination="RsZ-KV-rRJ" id="3Dc-2b-BoP"/>
                 <outlet property="videoView" destination="5yY-sq-Umm" id="qIf-hZ-YLX"/>
             </connections>
-            <point key="canvasLocation" x="265" y="195"/>
+            <point key="canvasLocation" x="185" y="243"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -26,23 +26,6 @@ static NSString * const reuseIdentifier = @"entryCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect frame = CGRectMake(self.view.frame.size.width - 56 - 16,
-                              self.view.frame.size.height - 56 - 16,
-                              56,
-                              56);
-    
-    self.floatingActionButton = [[LiquidFloatingActionButton alloc] initWithFrame:frame];
-    //self.floatingActionButton.animateStyle
-    self.floatingActionButton.delegate = self;
-    self.floatingActionButton.dataSource = self;
-    
-    LiquidFloatingCell *cell = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
-    [self.cells addObject:cell];
-    [self.cells addObject:cell];
-    [self.cells addObject:cell];
-    
-    [self.view addSubview:self.floatingActionButton];
-    
     // collection view layout setup
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     NSLog(@"layout: %@", layout);
@@ -59,6 +42,25 @@ static NSString * const reuseIdentifier = @"entryCellIdentifier";
     
     // add collection view to view controller
     [self.view addSubview:self.collectionView];
+    
+    CGRect frame = CGRectMake(self.view.frame.size.width - 56 - 16,
+                              self.view.frame.size.height - 56 - 16,
+                              56,
+                              56);
+    
+    self.floatingActionButton = [[LiquidFloatingActionButton alloc] initWithFrame:frame];
+    //self.floatingActionButton.animateStyle
+    self.floatingActionButton.delegate = self;
+    self.floatingActionButton.dataSource = self;
+    
+    self.cells = [[NSMutableArray alloc] init];
+    
+    LiquidFloatingCell *cell = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
+    [self.cells addObject:cell];
+    [self.cells addObject:cell];
+    [self.cells addObject:cell];
+    
+    [self.view addSubview:self.floatingActionButton];
     
     // setup demo content
     self.entries = [[NSMutableArray alloc] init];

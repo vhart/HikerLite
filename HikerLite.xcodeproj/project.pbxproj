@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B7D1C1A1BD2F75F00406412 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C161BD2F75F00406412 /* Entry.m */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C1B1BD2F75F00406412 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C181BD2F75F00406412 /* EntryCell.m */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C1C1BD2F75F00406412 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C191BD2F75F00406412 /* EntryCell.xib */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C1F1BD2F79E00406412 /* TripCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C231BD2F7E900406412 /* vid.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C211BD2F7E900406412 /* vid.m4v */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C241BD2F7E900406412 /* vid2.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C221BD2F7E900406412 /* vid2.m4v */; settings = {ASSET_TAGS = (); }; };
 		B7711B1F931201E40D1551B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35CDD57FC026BC52468D2A5 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAC81BD2E59E0064BD4A /* main.m */; };
 		C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EACB1BD2E59E0064BD4A /* AppDelegate.m */; };
-		C7A6EACF1BD2E59E0064BD4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EACE1BD2E59E0064BD4A /* ViewController.m */; };
 		C7A6EAD21BD2E59E0064BD4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A6EAD01BD2E59E0064BD4A /* Main.storyboard */; };
 		C7A6EAD41BD2E59E0064BD4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7A6EAD31BD2E59E0064BD4A /* Assets.xcassets */; };
 		C7A6EAD71BD2E59E0064BD4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A6EAD51BD2E59E0064BD4A /* LaunchScreen.storyboard */; };
@@ -40,14 +45,21 @@
 
 /* Begin PBXFileReference section */
 		0C8E718DDC744BFA3EAAA868 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3B7D1C151BD2F75F00406412 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		3B7D1C161BD2F75F00406412 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		3B7D1C171BD2F75F00406412 /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
+		3B7D1C181BD2F75F00406412 /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
+		3B7D1C191BD2F75F00406412 /* EntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
+		3B7D1C1D1BD2F79E00406412 /* TripCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripCollectionViewController.h; sourceTree = "<group>"; };
+		3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripCollectionViewController.m; sourceTree = "<group>"; };
+		3B7D1C211BD2F7E900406412 /* vid.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = vid.m4v; sourceTree = "<group>"; };
+		3B7D1C221BD2F7E900406412 /* vid2.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = vid2.m4v; sourceTree = "<group>"; };
 		8454CEDF3E921FC6E6CE073A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A35CDD57FC026BC52468D2A5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A6EAC41BD2E59E0064BD4A /* HikerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A6EAC81BD2E59E0064BD4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7A6EACA1BD2E59E0064BD4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7A6EACB1BD2E59E0064BD4A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C7A6EACD1BD2E59E0064BD4A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C7A6EACE1BD2E59E0064BD4A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C7A6EAD11BD2E59E0064BD4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7A6EAD31BD2E59E0064BD4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7A6EAD61BD2E59E0064BD4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,6 +122,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3B7D1C201BD2F7CB00406412 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3B7D1C211BD2F7E900406412 /* vid.m4v */,
+				3B7D1C221BD2F7E900406412 /* vid2.m4v */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		C7A6EABB1BD2E59E0064BD4A = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +159,14 @@
 			children = (
 				C7A6EACA1BD2E59E0064BD4A /* AppDelegate.h */,
 				C7A6EACB1BD2E59E0064BD4A /* AppDelegate.m */,
-				C7A6EACD1BD2E59E0064BD4A /* ViewController.h */,
-				C7A6EACE1BD2E59E0064BD4A /* ViewController.m */,
+				3B7D1C151BD2F75F00406412 /* Entry.h */,
+				3B7D1C161BD2F75F00406412 /* Entry.m */,
+				3B7D1C171BD2F75F00406412 /* EntryCell.h */,
+				3B7D1C181BD2F75F00406412 /* EntryCell.m */,
+				3B7D1C191BD2F75F00406412 /* EntryCell.xib */,
+				3B7D1C1D1BD2F79E00406412 /* TripCollectionViewController.h */,
+				3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */,
+				3B7D1C201BD2F7CB00406412 /* Resources */,
 				C7A6EAD01BD2E59E0064BD4A /* Main.storyboard */,
 				C7A6EAD31BD2E59E0064BD4A /* Assets.xcassets */,
 				C7A6EAD51BD2E59E0064BD4A /* LaunchScreen.storyboard */,
@@ -295,8 +322,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7D1C1C1BD2F75F00406412 /* EntryCell.xib in Resources */,
 				C7A6EAD71BD2E59E0064BD4A /* LaunchScreen.storyboard in Resources */,
+				3B7D1C231BD2F7E900406412 /* vid.m4v in Resources */,
 				C7A6EAD41BD2E59E0064BD4A /* Assets.xcassets in Resources */,
+				3B7D1C241BD2F7E900406412 /* vid2.m4v in Resources */,
 				C7A6EAD21BD2E59E0064BD4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,11 +400,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7D1C1B1BD2F75F00406412 /* EntryCell.m in Sources */,
 				C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */,
-				C7A6EACF1BD2E59E0064BD4A /* ViewController.m in Sources */,
+				3B7D1C1A1BD2F75F00406412 /* Entry.m in Sources */,
 				C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */,
 				C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */,
 				C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */,
+				3B7D1C1F1BD2F79E00406412 /* TripCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
