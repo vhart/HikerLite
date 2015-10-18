@@ -9,6 +9,9 @@
 #import "TripCollectionViewController.h"
 #import "Entry.h"
 #import "EntryCell.h"
+#import "LiquidFloatingActionButton-Swift.h"
+#import <AFNetworking/AFNetworking.h>
+
 
 @interface TripCollectionViewController ()
 
@@ -16,15 +19,37 @@
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray <LiquidFloatingCell *> *cells;
 @property (nonatomic) LiquidFloatingActionButton *floatingActionButton;
+@property (nonatomic) CGFloat latitude;
+@property (nonatomic) CGFloat longitude;
+@property (nonatomic) NSString *forecast;
 
 @end
 
 @implementation TripCollectionViewController
 
 static NSString * const reuseIdentifier = @"entryCellIdentifier";
+static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
+
+#pragma mark - Lifecycle methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupCollectionView];
+    
+    [self setupFloatingActionButton];
+    
+    [self setupLocation];
+    
+    [self fetchWeatherData];
+    
+    self.entries = [[NSMutableArray alloc] init];
+    [self setupDemoContent];
+}
+
+#pragma mark - Setup methods
+
+- (void)setupCollectionView {
     
     // collection view layout setup
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
@@ -42,6 +67,9 @@ static NSString * const reuseIdentifier = @"entryCellIdentifier";
     
     // add collection view to view controller
     [self.view addSubview:self.collectionView];
+}
+
+- (void)setupFloatingActionButton {
     
     CGRect frame = CGRectMake(self.view.frame.size.width - 56 - 16,
                               self.view.frame.size.height - 56 - 16,
@@ -49,22 +77,59 @@ static NSString * const reuseIdentifier = @"entryCellIdentifier";
                               56);
     
     self.floatingActionButton = [[LiquidFloatingActionButton alloc] initWithFrame:frame];
-    //self.floatingActionButton.animateStyle
     self.floatingActionButton.delegate = self;
     self.floatingActionButton.dataSource = self;
     
     self.cells = [[NSMutableArray alloc] init];
     
-    LiquidFloatingCell *cell = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
-    [self.cells addObject:cell];
-    [self.cells addObject:cell];
-    [self.cells addObject:cell];
+    LiquidFloatingCell *cellCamera = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
+    LiquidFloatingCell *cellText = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
+    LiquidFloatingCell *cellMap = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
+    
+    [self.cells addObject:cellCamera];
+    [self.cells addObject:cellText];
+    [self.cells addObject:cellMap];
     
     [self.view addSubview:self.floatingActionButton];
+}
+
+- (void)setupLocation {
+    self.latitude = 40.7;
+    self.longitude = -74.0;
+}
+
+- (void)fetchWeatherData {
     
-    // setup demo content
-    self.entries = [[NSMutableArray alloc] init];
-    [self setupDemoContent];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    
+    NSString *stringURL = [NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%f,%f", apiKey,self.longitude, self.latitude];
+    NSLog(@"%@", stringURL);
+    
+    [manager GET:stringURL  parameters: nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject)
+     {
+         
+         NSTimeInterval now = [responseObject[@"currently"][@"time"] doubleValue];
+         NSLog(@"now: %f", now);
+         
+         NSDictionary *hourlyData = responseObject[@"hourly"][@"data"];
+         NSLog(@"hourly data: %@", hourlyData);
+         
+         
+         for (NSDictionary *data in hourlyData) {
+             NSTimeInterval dataTime = [data[@"time"] doubleValue];
+             if (dataTime > now) {
+                 self.forecast = data[@"icon"];
+                 NSLog(@"dataTime: %f, forecast: %@", dataTime, self.forecast);
+                 break;
+             }
+         }
+         
+         
+         [self.view setNeedsDisplay];
+         
+     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+         NSLog(@"%@", error);
+     }];
 }
 
 - (void)setupDemoContent {
@@ -86,13 +151,13 @@ static NSString * const reuseIdentifier = @"entryCellIdentifier";
     [self.entries addObject:entryFour];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"vid" ofType:@"m4v"];
-    NSLog(@"%@", path);
+    //NSLog(@"%@", path);
     NSURL *url = [NSURL fileURLWithPath:path];
     Entry *entryFive = [[Entry alloc] initWithVideoURL:url];
     [self.entries addObject:entryFive];
     
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"vid2" ofType:@"m4v"];
-    NSLog(@"%@", path2);
+    //NSLog(@"%@", path2);
     NSURL *url2 = [NSURL fileURLWithPath:path2];
     Entry *entrySix = [[Entry alloc] initWithVideoURL:url2];
     [self.entries addObject:entrySix];
@@ -200,7 +265,7 @@ static NSString * const reuseIdentifier = @"entryCellIdentifier";
                 AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
                 
                 AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
-                NSLog(@"%@", CGRectCreateDictionaryRepresentation(cell.videoView.bounds));
+                //NSLog(@"%@", CGRectCreateDictionaryRepresentation(cell.videoView.bounds));
                 layer.frame = cell.videoView.bounds;
                 layer.videoGravity = AVLayerVideoGravityResizeAspect;
                 
