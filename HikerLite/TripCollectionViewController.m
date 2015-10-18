@@ -115,19 +115,19 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 - (void)setupLocationManager {
     
-        if (self.locationManager == nil) {
-            self.locationManager = [[CLLocationManager alloc]init];
-            self.locationManager.delegate = self;
-            
-            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
-                [self.locationManager requestAlwaysAuthorization];
-            }
-            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
-                [self.locationManager requestWhenInUseAuthorization];
-            }
-            
-            [self.locationManager startUpdatingLocation];
+    if (self.locationManager == nil) {
+        self.locationManager = [[CLLocationManager alloc]init];
+        self.locationManager.delegate = self;
+        
+        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+            [self.locationManager requestAlwaysAuthorization];
         }
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        
+        [self.locationManager startUpdatingLocation];
+    }
 
 }
 

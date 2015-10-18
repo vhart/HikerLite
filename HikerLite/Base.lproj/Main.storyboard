@@ -65,7 +65,7 @@
                                     </textView>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.84676412399320855" blue="0.59179294151675355" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="RIU-zu-4eX" firstAttribute="top" secondItem="aUo-Nj-xZg" secondAttribute="top" constant="8" id="J1P-aw-Ybg"/>
                                     <constraint firstAttribute="trailing" secondItem="RIU-zu-4eX" secondAttribute="trailing" constant="8" id="L3l-yp-MSm"/>
@@ -97,6 +97,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="aUo-Nj-xZg" id="hvF-8R-uks"/>
+                        <outlet property="entryTextView" destination="RIU-zu-4eX" id="kGW-9C-bMk"/>
+                        <outlet property="keyboardOffsetConstraint" destination="2kW-xo-xpD" id="T09-72-y4H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kt9-9a-dfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
