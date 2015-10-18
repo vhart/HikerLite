@@ -46,6 +46,12 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     [self setupDemoContent];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.floatingActionButton close];
+}
+
 #pragma mark - Setup methods
 
 - (void)setupCollectionView {
@@ -181,6 +187,18 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 #pragma mark - LiquidFloatingActionButtonDelegate
 
 - (void)liquidFloatingActionButton:(LiquidFloatingActionButton *)liquidFloatingActionButton didSelectItemAtIndex:(NSInteger)index {
+    
+    switch (index) {
+        case 0:
+            break;
+        case 1:
+            [self performSegueWithIdentifier:@"textSegue" sender:self];
+            break;
+        case 2:
+            break;
+        default:
+            break;
+    }
     
 }
 

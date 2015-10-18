@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Trip Collection View Controller-->
@@ -19,6 +18,9 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="9Kk-Kh-B2o" kind="presentation" identifier="textSegue" id="CgI-bA-L4r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,26 +54,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="W4J-Yv-Aym">
-                                <rect key="frame" x="36" y="96" width="528" height="472"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUo-Nj-xZg">
+                                <rect key="frame" x="16" y="80" width="568" height="504"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RIU-zu-4eX">
+                                        <rect key="frame" x="8" y="8" width="552" height="488"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="RIU-zu-4eX" firstAttribute="top" secondItem="aUo-Nj-xZg" secondAttribute="top" constant="8" id="J1P-aw-Ybg"/>
+                                    <constraint firstAttribute="trailing" secondItem="RIU-zu-4eX" secondAttribute="trailing" constant="8" id="L3l-yp-MSm"/>
+                                    <constraint firstItem="RIU-zu-4eX" firstAttribute="leading" secondItem="aUo-Nj-xZg" secondAttribute="leading" constant="8" id="TZP-I7-L1v"/>
+                                    <constraint firstAttribute="bottom" secondItem="RIU-zu-4eX" secondAttribute="bottom" constant="8" id="Te2-06-7T8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="W4J-Yv-Aym" firstAttribute="top" secondItem="Htz-a5-hHf" secondAttribute="bottom" constant="32" id="OmJ-Hk-ejB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="W4J-Yv-Aym" secondAttribute="trailing" constant="16" id="PdN-2D-FLL"/>
-                            <constraint firstItem="W4J-Yv-Aym" firstAttribute="leading" secondItem="QuR-dl-qCX" secondAttribute="leadingMargin" constant="16" id="uoz-LN-zP3"/>
-                            <constraint firstItem="JsG-Zd-Mtx" firstAttribute="top" secondItem="W4J-Yv-Aym" secondAttribute="bottom" constant="32" id="vnh-8Q-trB"/>
+                            <constraint firstItem="JsG-Zd-Mtx" firstAttribute="top" secondItem="aUo-Nj-xZg" secondAttribute="bottom" constant="16" id="2kW-xo-xpD"/>
+                            <constraint firstItem="aUo-Nj-xZg" firstAttribute="top" secondItem="Htz-a5-hHf" secondAttribute="bottom" constant="16" id="YiI-Tj-rQp"/>
+                            <constraint firstItem="aUo-Nj-xZg" firstAttribute="leading" secondItem="QuR-dl-qCX" secondAttribute="leading" constant="16" id="ko9-RR-w78"/>
+                            <constraint firstAttribute="trailing" secondItem="aUo-Nj-xZg" secondAttribute="trailing" constant="16" id="otH-Ow-jNP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sjD-Vt-6cc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eJ0-RV-6UN"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rV7-Og-AVm"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eJ0-RV-6UN">
+                            <connections>
+                                <action selector="didTapCancel:" destination="xeV-f7-byu" id="2iK-66-jhc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rV7-Og-AVm">
+                            <connections>
+                                <action selector="didTapSave:" destination="xeV-f7-byu" id="APx-nX-TCH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="aUo-Nj-xZg" id="hvF-8R-uks"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kt9-9a-dfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
