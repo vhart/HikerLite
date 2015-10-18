@@ -36,7 +36,7 @@
     
     [self makeSectionalMarkersForMap];
     
-    CLLocationCoordinate2D center = [self findCenterForMarkers];
+//    CLLocationCoordinate2D center = [self findCenterForMarkers];
     
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:44.9
