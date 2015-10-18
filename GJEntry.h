@@ -19,4 +19,6 @@
 
 + (NSString *) parseClassName;
 - (void)fileFromImage:(UIImage *)image;
+- (void)fileFromVideoURL:(NSURL *)url;
+- (NSURL *)urlFromMediaFile;
 @end

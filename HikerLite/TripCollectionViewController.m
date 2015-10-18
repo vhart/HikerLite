@@ -23,6 +23,7 @@
 @property (nonatomic) CGFloat longitude;
 @property (nonatomic) NSString *forecast;
 @property (nonatomic) CLLocationManager *locationManager;
+@property (nonatomic) UIImagePickerController *imagePicker;
 
 @end
 
@@ -44,10 +45,12 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     [self setupLocationManager];
     
+    [self setupImagePicker];
+    
     [self fetchWeatherData];
     
     self.entries = [[NSMutableArray alloc] init];
-    [self setupDemoContent];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -131,7 +134,35 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 }
 
+- (void)setupImagePicker{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"GJOuting"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count!=0) {
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
+            [objects sortedArrayUsingDescriptors:@[descriptor]];
+            
+            self.currentOuting = [objects lastObject];
+            
+          
+            
+        }
+        else {
+            self.currentOuting = [[GJOutings alloc]initWithNewEntriesArray];
+            self.currentOuting.createdAt = [NSDate date];
+            self.currentOuting.outingName = @"Demo Outing";
+            [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                NSLog(@"Saved");
+            }];
+        }
+    }];
+    
+    self.imagePicker = [UIImagePickerController new];
+    self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *)kUTTypeMovie, (NSString *) kUTTypeImage ,nil];
+    self.imagePicker.videoMaximumDuration = 5.0f;
+    self.imagePicker.videoQuality = UIImagePickerControllerQualityTypeMedium;
 
+}
 
 - (void)fetchWeatherData {
     
@@ -167,40 +198,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
      }];
 }
 
-- (void)setupDemoContent {
-    self.currentOuting = [[GJOutings alloc]initWithNewEntriesArray];
-    
-    UIImage *image1 = [UIImage imageNamed:@"wilderness1"];
-    GJEntry *entryOne = [GJEntry new];
-    entryOne.mediaType = @"public.image";
-    
-    [self.currentOuting.entriesArray addObject:entryOne];
-    
-    UIImage *image2 = [UIImage imageNamed:@"wilderness2"];
-    Entry *entryTwo = [[Entry alloc] initWithImage:image2];
-    [self.entries addObject:entryTwo];
-    
-    NSString *text1 = @"It's a beautiful sunny day! I hear the birds in my ear and in my mind. Seriously, they won't stop chirping. On an on and on. All afternoon. I haven't seen another human being for two days now. The berries are getting harder and harder to find. I almost caught a squirrel. So hungry.";
-    Entry *entryThree = [[Entry alloc] initWithText:text1];
-    [self.entries addObject:entryThree];
-    
-    UIImage *image3 = [UIImage imageNamed:@"wilderness2"];
-    Entry *entryFour = [[Entry alloc] initWithImage:image3];
-    [self.entries addObject:entryFour];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"vid" ofType:@"m4v"];
-    //NSLog(@"%@", path);
-    NSURL *url = [NSURL fileURLWithPath:path];
-    Entry *entryFive = [[Entry alloc] initWithVideoURL:url];
-    [self.entries addObject:entryFive];
-    
-    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"vid2" ofType:@"m4v"];
-    //NSLog(@"%@", path2);
-    NSURL *url2 = [NSURL fileURLWithPath:path2];
-    Entry *entrySix = [[Entry alloc] initWithVideoURL:url2];
-    [self.entries addObject:entrySix];
-    [self.entries addObject:entrySix];
-}
+
 
 #pragma mark - LiquidFloatingActionButtonDataSource
 
@@ -218,6 +216,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     switch (index) {
         case 0:
+            [self cameraAction];
             break;
         case 1:
             [self performSegueWithIdentifier:@"textSegue" sender:self];
@@ -278,14 +277,14 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.entries.count;
+    return self.currentOuting.entriesArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     EntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    if (self.entries[indexPath.row].image != nil) {
+    if ([self.currentOuting.entriesArray[indexPath.row].mediaType  isEqualToString:@"public.image"]) {
         
         cell.photoView.hidden = NO;
         cell.descriptionLabel.hidden = YES;
@@ -295,7 +294,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         cell.photoView.image = self.entries[indexPath.row].image;
         
-    } else if (self.entries[indexPath.row].video != nil) {
+    } else if ([self.currentOuting.entriesArray[indexPath.row].mediaType isEqualToString:@"public.video"]) {
         
         cell.photoView.hidden = YES;
         cell.descriptionLabel.hidden = YES;
@@ -308,7 +307,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         dispatch_async(queue, ^{
             
-            AVAsset *asset = [AVAsset assetWithURL:self.entries[indexPath.row].video];
+            AVAsset *asset = [AVAsset assetWithURL:[self.currentOuting.entriesArray[indexPath.row] urlFromMediaFile]];
             AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
             
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -371,14 +370,50 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 }
 */
 
-#pragma mark - Navigation
-
-/*
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Camera and Video Methods
+- (void)cameraAction{
+    
+    self.imagePicker.delegate = self;
+    self.imagePicker.allowsEditing = YES;
+    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:self.imagePicker animated:YES completion:NULL];
 }
-*/
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSLog(@"%@",info);
+    
+    GJEntry *newEntry = [GJEntry new];
+    [self.currentOuting.entriesArray addObject:newEntry];
+    newEntry.mediaType = info[UIImagePickerControllerMediaType];
+    newEntry.createdAt = [NSDate date];
+    
+    if ([newEntry.mediaType isEqualToString:@"public.image"]) {
+        UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+        
+        [newEntry fileFromImage:chosenImage];
+        
+        [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            
+            NSLog(@"succeeded at saving");
+        }];
+    }
+    
+    else if([newEntry.mediaType isEqualToString:@"public.movie"]){
+        NSURL *movieURL = info[UIImagePickerControllerMediaURL];
+        [newEntry fileFromVideoURL:movieURL];
+        
+        [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            NSLog(@"succeeded at saving video");
+        }];
+        
+        
+    }
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 @end
