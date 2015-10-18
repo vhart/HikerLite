@@ -13,7 +13,11 @@
 #import <AFNetworking/AFNetworking.h>
 #import <CoreLocation/CoreLocation.h>
 
+<<<<<<< HEAD
 @interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+=======
+@interface TripCollectionViewController ()
+>>>>>>> 11e49f228e2aced68ae585fed2304373c5ce8d11
 
 @property (nonatomic) NSMutableArray <Entry *> *entries;
 @property (nonatomic) UICollectionView *collectionView;
@@ -74,10 +78,13 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 - (void)setupFloatingActionButton {
     
-    CGRect frame = CGRectMake(self.view.frame.size.width - 56 - 16,
-                              self.view.frame.size.height - 56 - 16,
-                              56,
-                              56);
+    NSInteger buttonRadius = floor(0.135 * self.view.frame.size.width);
+    NSLog(@"self.view.frame.size.width: %f", self.view.frame.size.width);
+    
+    CGRect frame = CGRectMake(self.view.frame.size.width - buttonRadius - 16,
+                              self.view.frame.size.height - buttonRadius - 16,
+                              buttonRadius,
+                              buttonRadius);
     
     self.floatingActionButton = [[LiquidFloatingActionButton alloc] initWithFrame:frame];
     self.floatingActionButton.delegate = self;
@@ -85,13 +92,15 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     self.cells = [[NSMutableArray alloc] init];
     
-    LiquidFloatingCell *cellCamera = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
-    LiquidFloatingCell *cellText = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
+    LiquidFloatingCell *cellCamera = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"cameraIcon"]];
+    LiquidFloatingCell *cellText = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"composeIcon"]];
     LiquidFloatingCell *cellMap = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"pinIcon"]];
+    LiquidFloatingCell *cellOutings = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"outingsIcon"]];
     
     [self.cells addObject:cellCamera];
     [self.cells addObject:cellText];
     [self.cells addObject:cellMap];
+    [self.cells addObject:cellOutings];
     
     [self.view addSubview:self.floatingActionButton];
 }
