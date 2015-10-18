@@ -21,6 +21,7 @@
 @property (nonatomic) LiquidFloatingActionButton *floatingActionButton;
 @property (nonatomic) CGFloat latitude;
 @property (nonatomic) CGFloat longitude;
+@property (nonatomic) NSString *forecast;
 
 @end
 
@@ -107,10 +108,22 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     [manager GET:stringURL  parameters: nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject)
      {
          
-         NSLog(@"%@", responseObject);
+         NSTimeInterval now = [responseObject[@"currently"][@"time"] doubleValue];
+         NSLog(@"now: %f", now);
          
-         NSDictionary *hourlyData = responseObject[@"daily"][@"data"];
-         //NSLog(@"%@", dailyData);
+         NSDictionary *hourlyData = responseObject[@"hourly"][@"data"];
+         NSLog(@"hourly data: %@", hourlyData);
+         
+         
+         for (NSDictionary *data in hourlyData) {
+             NSTimeInterval dataTime = [data[@"time"] doubleValue];
+             if (dataTime > now) {
+                 self.forecast = data[@"icon"];
+                 NSLog(@"dataTime: %f, forecast: %@", dataTime, self.forecast);
+                 break;
+             }
+         }
+         
          
          [self.view setNeedsDisplay];
          
