@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LiquidFloatingActionButton-Swift.h"
+#import "GJOutings.h"
 
 @interface TripCollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, LiquidFloatingActionButtonDataSource, LiquidFloatingActionButtonDelegate>
+
+@property (nonatomic) GJOutings *currentOuting;
 
 @end

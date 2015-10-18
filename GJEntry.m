@@ -22,4 +22,30 @@
     return @"GJEntry";
 }
 
+- (void)fileFromImage:(UIImage *)image{
+    
+    NSData *data = UIImageJPEGRepresentation(image, .8);
+
+    self.file = [PFFile fileWithData:data];
+    
+}
+
+- (void)fileFromVideoURL:(NSURL *)url{
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.file = [PFFile fileWithData:data];
+    
+}
+
+- (NSURL *)urlFromMediaFile{
+    
+    if (![self.mediaType isEqualToString: @"public.video"]) {
+        return nil;
+    }
+    
+    NSString *stringUrl = self.file.url;
+    NSURL *url = [NSURL URLWithString:stringUrl];
+    return url;
+    
+}
 @end

@@ -24,6 +24,8 @@
 		C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAFC1BD2EBD80064BD4A /* GJOutings.m */; };
 		C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */; };
 		C7A6EB021BD2EECE0064BD4A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */; };
+		C7A6EB081BD404DF0064BD4A /* HLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EB071BD404DF0064BD4A /* HLMapView.m */; };
+		C7A6EB0F1BD409E90064BD4A /* GMSMarker+GJEntryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EB0E1BD409E90064BD4A /* GMSMarker+GJEntryArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,10 @@
 		C7A6EAFD1BD2EBD80064BD4A /* GJEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJEntry.h; sourceTree = "<group>"; };
 		C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJEntry.m; sourceTree = "<group>"; };
 		C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C7A6EB061BD404DF0064BD4A /* HLMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMapView.h; sourceTree = "<group>"; };
+		C7A6EB071BD404DF0064BD4A /* HLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMapView.m; sourceTree = "<group>"; };
+		C7A6EB0D1BD409E90064BD4A /* GMSMarker+GJEntryArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMarker+GJEntryArray.h"; sourceTree = "<group>"; };
+		C7A6EB0E1BD409E90064BD4A /* GMSMarker+GJEntryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMarker+GJEntryArray.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 		C7A6EABB1BD2E59E0064BD4A = {
 			isa = PBXGroup;
 			children = (
+				C7A6EB0C1BD4099B0064BD4A /* Categories */,
 				C7A6EAFA1BD2EAF80064BD4A /* Parse */,
 				C7A6EAC61BD2E59E0064BD4A /* HikerLite */,
 				C7A6EAE01BD2E59E0064BD4A /* HikerLiteTests */,
@@ -166,6 +173,8 @@
 				3B7D1C191BD2F75F00406412 /* EntryCell.xib */,
 				3B7D1C1D1BD2F79E00406412 /* TripCollectionViewController.h */,
 				3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */,
+				C7A6EB061BD404DF0064BD4A /* HLMapView.h */,
+				C7A6EB071BD404DF0064BD4A /* HLMapView.m */,
 				3B7D1C201BD2F7CB00406412 /* Resources */,
 				C7A6EAD01BD2E59E0064BD4A /* Main.storyboard */,
 				C7A6EAD31BD2E59E0064BD4A /* Assets.xcassets */,
@@ -211,6 +220,15 @@
 				C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		C7A6EB0C1BD4099B0064BD4A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C7A6EB0D1BD409E90064BD4A /* GMSMarker+GJEntryArray.h */,
+				C7A6EB0E1BD409E90064BD4A /* GMSMarker+GJEntryArray.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +421,8 @@
 				3B7D1C1B1BD2F75F00406412 /* EntryCell.m in Sources */,
 				C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */,
 				3B7D1C1A1BD2F75F00406412 /* Entry.m in Sources */,
+				C7A6EB081BD404DF0064BD4A /* HLMapView.m in Sources */,
+				C7A6EB0F1BD409E90064BD4A /* GMSMarker+GJEntryArray.m in Sources */,
 				C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */,
 				C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */,
 				C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */,

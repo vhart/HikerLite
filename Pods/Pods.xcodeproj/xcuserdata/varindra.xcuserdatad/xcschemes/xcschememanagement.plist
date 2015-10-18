@@ -4,35 +4,52 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>LiquidFloatingActionButton-LiquidFloatingActionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>LiquidFloatingActionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -52,7 +69,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5DB0A851D93BDE6BC1F472532CDD08CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5E34A84D5F144DF5E438036EA1C0C1DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6BC7938C22E3EC27FC1EC0309593F338</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7474DA504D7DEE3403AA7C944A8F1062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78FEAE0EA314D478790F2685CB07BEA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +99,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8EB54178DF919CC3971D841E3CBC87E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8FF26D68B62D82A19CB92CAA8837F10B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91233EBFBA6CA890554F6EAE664CC12C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9376625192FB8EE7C2117FB84202EAD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

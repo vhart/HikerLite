@@ -11,9 +11,9 @@
 #import "EntryCell.h"
 #import "LiquidFloatingActionButton-Swift.h"
 #import <AFNetworking/AFNetworking.h>
+#import <CoreLocation/CoreLocation.h>
 
-
-@interface TripCollectionViewController ()
+@interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic) NSMutableArray <Entry *> *entries;
 @property (nonatomic) UICollectionView *collectionView;
@@ -22,6 +22,7 @@
 @property (nonatomic) CGFloat latitude;
 @property (nonatomic) CGFloat longitude;
 @property (nonatomic) NSString *forecast;
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -40,6 +41,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     [self setupFloatingActionButton];
     
     [self setupLocation];
+    
+    [self setupLocationManager];
     
     [self fetchWeatherData];
     
@@ -98,6 +101,27 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     self.longitude = -74.0;
 }
 
+
+- (void)setupLocationManager {
+    
+        if (self.locationManager == nil) {
+            self.locationManager = [[CLLocationManager alloc]init];
+            self.locationManager.delegate = self;
+            
+            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
+                [self.locationManager requestAlwaysAuthorization];
+            }
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+                [self.locationManager requestWhenInUseAuthorization];
+            }
+            
+            [self.locationManager startUpdatingLocation];
+        }
+
+}
+
+
+
 - (void)fetchWeatherData {
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
@@ -133,10 +157,13 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 }
 
 - (void)setupDemoContent {
+    self.currentOuting = [[GJOutings alloc]initWithNewEntriesArray];
     
     UIImage *image1 = [UIImage imageNamed:@"wilderness1"];
-    Entry *entryOne = [[Entry alloc] initWithImage:image1];
-    [self.entries addObject:entryOne];
+    GJEntry *entryOne = [GJEntry new];
+    entryOne.mediaType = @"public.image";
+    
+    [self.currentOuting.entriesArray addObject:entryOne];
     
     UIImage *image2 = [UIImage imageNamed:@"wilderness2"];
     Entry *entryTwo = [[Entry alloc] initWithImage:image2];
