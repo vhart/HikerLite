@@ -15,6 +15,9 @@
 		3B7D1C241BD2F7E900406412 /* vid2.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C221BD2F7E900406412 /* vid2.m4v */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C271BD3EE4500406412 /* TextEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C261BD3EE4500406412 /* TextEntryViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C2A1BD4249700406412 /* HLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C291BD4249700406412 /* HLMapView.m */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C2D1BD43E6900406412 /* OutingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C2C1BD43E6900406412 /* OutingCell.m */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C2F1BD43E7B00406412 /* OutingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C321BD43FF100406412 /* OutingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C311BD43FF100406412 /* OutingsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B7711B1F931201E40D1551B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35CDD57FC026BC52468D2A5 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAC81BD2E59E0064BD4A /* main.m */; };
 		C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EACB1BD2E59E0064BD4A /* AppDelegate.m */; };
@@ -61,6 +64,11 @@
 		3B7D1C261BD3EE4500406412 /* TextEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEntryViewController.m; sourceTree = "<group>"; };
 		3B7D1C281BD4249700406412 /* HLMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMapView.h; sourceTree = "<group>"; };
 		3B7D1C291BD4249700406412 /* HLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMapView.m; sourceTree = "<group>"; };
+		3B7D1C2B1BD43E6900406412 /* OutingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutingCell.h; sourceTree = "<group>"; };
+		3B7D1C2C1BD43E6900406412 /* OutingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutingCell.m; sourceTree = "<group>"; };
+		3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutingCell.xib; sourceTree = "<group>"; };
+		3B7D1C301BD43FF100406412 /* OutingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutingsTableViewController.h; sourceTree = "<group>"; };
+		3B7D1C311BD43FF100406412 /* OutingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutingsTableViewController.m; sourceTree = "<group>"; };
 		8454CEDF3E921FC6E6CE073A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A35CDD57FC026BC52468D2A5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A6EAC41BD2E59E0064BD4A /* HikerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +188,11 @@
 				3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */,
 				3B7D1C251BD3EE4500406412 /* TextEntryViewController.h */,
 				3B7D1C261BD3EE4500406412 /* TextEntryViewController.m */,
+				3B7D1C2B1BD43E6900406412 /* OutingCell.h */,
+				3B7D1C2C1BD43E6900406412 /* OutingCell.m */,
+				3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */,
+				3B7D1C301BD43FF100406412 /* OutingsTableViewController.h */,
+				3B7D1C311BD43FF100406412 /* OutingsTableViewController.m */,
 				3B7D1C201BD2F7CB00406412 /* Resources */,
 				C7A6EAD01BD2E59E0064BD4A /* Main.storyboard */,
 				C7A6EAD31BD2E59E0064BD4A /* Assets.xcassets */,
@@ -350,6 +363,7 @@
 				3B7D1C231BD2F7E900406412 /* vid.m4v in Resources */,
 				C7A6EAD41BD2E59E0064BD4A /* Assets.xcassets in Resources */,
 				3B7D1C241BD2F7E900406412 /* vid2.m4v in Resources */,
+				3B7D1C2F1BD43E7B00406412 /* OutingCell.xib in Resources */,
 				C7A6EAD21BD2E59E0064BD4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,12 +441,14 @@
 				C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */,
 				3B7D1C271BD3EE4500406412 /* TextEntryViewController.m in Sources */,
 				3B7D1C1A1BD2F75F00406412 /* Entry.m in Sources */,
+				3B7D1C2D1BD43E6900406412 /* OutingCell.m in Sources */,
 				C7A6EB0F1BD409E90064BD4A /* GMSMarker+GJEntryArray.m in Sources */,
 				C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */,
 				C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */,
 				3B7D1C2A1BD4249700406412 /* HLMapView.m in Sources */,
 				C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */,
 				3B7D1C1F1BD2F79E00406412 /* TripCollectionViewController.m in Sources */,
+				3B7D1C321BD43FF100406412 /* OutingsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

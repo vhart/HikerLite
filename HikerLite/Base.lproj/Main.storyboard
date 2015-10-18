@@ -105,5 +105,45 @@
             </objects>
             <point key="canvasLocation" x="906" y="1015"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Sjb-sa-ahH">
+            <objects>
+                <tableViewController id="jvM-5C-zD7" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wwx-8T-DIF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="jvM-5C-zD7" id="CnG-Xh-ecf"/>
+                            <outlet property="delegate" destination="jvM-5C-zD7" id="ZYu-eg-fud"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="2JF-f0-hKW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="NqS-o0-ioV"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fbl-3l-gsl"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P5a-Qo-dvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="1727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HE5-wH-fia">
+            <objects>
+                <navigationController id="sqi-IV-BsT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gTQ-8h-o8p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jvM-5C-zD7" kind="relationship" relationship="rootViewController" id="ysg-is-kZi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3J-nB-AUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="1727"/>
+        </scene>
     </scenes>
 </document>

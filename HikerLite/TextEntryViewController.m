@@ -48,13 +48,11 @@
     if (self.keyboardOffsetConstraint.constant == 16) {
         self.keyboardOffsetConstraint.constant += kbSize.height;
     }
-
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     self.keyboardOffsetConstraint.constant = 16;
-    
 }
 
 #pragma mark - Button actions
