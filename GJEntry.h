@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 @interface GJEntry : PFObject <PFSubclassing>
 
 @property (nonatomic) PFFile *file;
@@ -17,5 +18,5 @@
 @property (nonatomic) NSDate *createdAt;
 
 + (NSString *) parseClassName;
-
+- (void)fileFromImage:(UIImage *)image;
 @end

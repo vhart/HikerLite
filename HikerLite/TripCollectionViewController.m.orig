@@ -13,7 +13,11 @@
 #import <AFNetworking/AFNetworking.h>
 #import <CoreLocation/CoreLocation.h>
 
+<<<<<<< HEAD
 @interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+=======
+@interface TripCollectionViewController ()
+>>>>>>> 11e49f228e2aced68ae585fed2304373c5ce8d11
 
 @property (nonatomic) NSMutableArray <Entry *> *entries;
 @property (nonatomic) UICollectionView *collectionView;
@@ -48,12 +52,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     self.entries = [[NSMutableArray alloc] init];
     [self setupDemoContent];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.floatingActionButton close];
 }
 
 #pragma mark - Setup methods
@@ -215,18 +213,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 #pragma mark - LiquidFloatingActionButtonDelegate
 
 - (void)liquidFloatingActionButton:(LiquidFloatingActionButton *)liquidFloatingActionButton didSelectItemAtIndex:(NSInteger)index {
-    
-    switch (index) {
-        case 0:
-            break;
-        case 1:
-            [self performSegueWithIdentifier:@"textSegue" sender:self];
-            break;
-        case 2:
-            break;
-        default:
-            break;
-    }
     
 }
 
