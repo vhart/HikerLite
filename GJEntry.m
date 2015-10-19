@@ -15,7 +15,7 @@
 @dynamic fileExt;
 @dynamic location;
 @dynamic textMedia;
-@dynamic createdAt;
+@dynamic createdDate;
 
 + (NSString *) parseClassName{
     

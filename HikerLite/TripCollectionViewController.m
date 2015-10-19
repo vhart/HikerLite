@@ -7,15 +7,15 @@
 //
 
 #import "TripCollectionViewController.h"
-#import "Entry.h"
 #import "EntryCell.h"
+#import "TextEntryViewController.h"
 #import "LiquidFloatingActionButton-Swift.h"
 #import <AFNetworking/AFNetworking.h>
 #import <CoreLocation/CoreLocation.h>
+@import AVFoundation;
 
 @interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic) NSMutableArray <Entry *> *entries;
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray <LiquidFloatingCell *> *cells;
 @property (nonatomic) LiquidFloatingActionButton *floatingActionButton;
@@ -47,14 +47,15 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     [self setupImagePicker];
     
+    [self fetchOutings];
+    
     [self fetchWeatherData];
-    
-    self.entries = [[NSMutableArray alloc] init];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self fetchOutings];
     
     [self.floatingActionButton close];
 }
@@ -115,7 +116,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     self.longitude = -74.0;
 }
 
-
 - (void)setupLocationManager {
     
     if (self.locationManager == nil) {
@@ -135,27 +135,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 }
 
 - (void)setupImagePicker{
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"GJOuting"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects.count!=0) {
-            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
-            [objects sortedArrayUsingDescriptors:@[descriptor]];
-            
-            self.currentOuting = [objects lastObject];
-            
-          
-            
-        }
-        else {
-            self.currentOuting = [[GJOutings alloc]initWithNewEntriesArray];
-            self.currentOuting.createdAt = [NSDate date];
-            self.currentOuting.outingName = @"Demo Outing";
-            [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                NSLog(@"Saved");
-            }];
-        }
-    }];
     
     self.imagePicker = [UIImagePickerController new];
     self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *)kUTTypeMovie, (NSString *) kUTTypeImage ,nil];
@@ -190,7 +169,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
              }
          }
          
-         
          [self.view setNeedsDisplay];
          
      } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
@@ -198,7 +176,30 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
      }];
 }
 
-
+- (void)fetchOutings {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"GJOutings"];
+    [query includeKey:@"entriesArray"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count!=0) {
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdDate" ascending:NO];
+            [objects sortedArrayUsingDescriptors:@[descriptor]];
+            
+            self.currentOuting = [objects lastObject];
+            NSLog(@"entries count: %d", self.currentOuting.entriesArray.count);
+            [self.collectionView reloadData];
+            
+        } else {
+            
+            self.currentOuting = [[GJOutings alloc]initWithNewEntriesArray];
+            self.currentOuting.createdDate = [NSDate date];
+            self.currentOuting.outingName = @"Demo Outing";
+            [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                NSLog(@"Outing created");
+            }];
+        }
+    }];
+}
 
 #pragma mark - LiquidFloatingActionButtonDataSource
 
@@ -292,7 +293,10 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         cell.photoView.layer.cornerRadius = 10;
         
-        cell.photoView.image = self.entries[indexPath.row].image;
+        cell.photoView.file = [self.currentOuting.entriesArray[indexPath.row] file];
+        [cell.photoView loadInBackground:^(UIImage * _Nullable image, NSError * _Nullable error) {
+            NSLog(@"Image loaded!");
+        }];
         
     } else if ([self.currentOuting.entriesArray[indexPath.row].mediaType isEqualToString:@"public.video"]) {
         
@@ -311,6 +315,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
             
             dispatch_sync(dispatch_get_main_queue(), ^{
+                
                 AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
                 
                 AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
@@ -332,7 +337,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         cell.descriptionLabel.layer.cornerRadius = 10;
         
-        cell.descriptionLabel.text = self.entries[indexPath.row].text;
+        cell.descriptionLabel.text = [self.currentOuting.entriesArray[indexPath.row] textMedia];
     }
     
     return cell;
@@ -371,7 +376,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 */
 
 #pragma mark - Camera and Video Methods
-- (void)cameraAction{
+
+- (void)cameraAction {
     
     self.imagePicker.delegate = self;
     self.imagePicker.allowsEditing = YES;
@@ -382,12 +388,14 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
     NSLog(@"%@",info);
     
     GJEntry *newEntry = [GJEntry new];
     [self.currentOuting.entriesArray addObject:newEntry];
     newEntry.mediaType = info[UIImagePickerControllerMediaType];
-    newEntry.createdAt = [NSDate date];
+    newEntry.createdDate = [NSDate date];
+    newEntry.location = [PFGeoPoint geoPointWithLocation:self.locationManager.location];
     
     if ([newEntry.mediaType isEqualToString:@"public.image"]) {
         UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
@@ -408,11 +416,18 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             NSLog(@"succeeded at saving video");
         }];
         
-        
     }
     
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    TextEntryViewController *vc = (TextEntryViewController *) [[segue destinationViewController] topViewController];
+    vc.currentOuting = self.currentOuting;
+    vc.locationManager = self.locationManager;
 }
 
 

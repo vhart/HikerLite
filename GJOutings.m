@@ -11,7 +11,7 @@
 @implementation GJOutings
 
 @dynamic outingName;
-@dynamic createdAt;
+@dynamic createdDate;
 @dynamic entriesArray;
 
 + (NSString *)parseClassName{

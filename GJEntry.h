@@ -15,7 +15,7 @@
 @property (nonatomic) NSString *fileExt;
 @property (nonatomic) PFGeoPoint *location;
 @property (nonatomic) NSString *textMedia;
-@property (nonatomic) NSDate *createdAt;
+@property (nonatomic) NSDate *createdDate;
 
 + (NSString *) parseClassName;
 - (void)fileFromImage:(UIImage *)image;

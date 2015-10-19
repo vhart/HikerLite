@@ -7,6 +7,7 @@
 //
 
 #import "TextEntryViewController.h"
+#import "GJEntry.h"
 
 @interface TextEntryViewController ()
 
@@ -58,6 +59,18 @@
 #pragma mark - Button actions
 
 - (IBAction)didTapSave:(UIBarButtonItem *)sender {
+    
+    GJEntry *newEntry = [GJEntry new];
+    newEntry.createdDate = [NSDate date];
+    newEntry.mediaType = @"public.text";
+    newEntry.textMedia = self.entryTextView.text;
+    newEntry.location = [PFGeoPoint geoPointWithLocation:self.locationManager.location];
+    
+    [self.currentOuting.entriesArray addObject:newEntry];
+    [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        NSLog(@"Text saved");
+    }];
+    
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

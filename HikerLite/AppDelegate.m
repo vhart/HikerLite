@@ -21,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [Parse setApplicationId:@"NU8WRcLcfFleATEjAsRtTxoeZTwWPQp6b5gWhm9d" clientKey:@"XBPTDhNPb4oeD6ZkABTgrVYD9WXlkHhNrKMUMMgP"];
+    [Parse setApplicationId:@"hlnFxyJQxmm2sch6SIlwRVIve0uI1nn5n5ygTZyS" clientKey:@"7ZwLOo8CTi8ZVnT9qK98URVtVsvqeJFPwiDfbO2Y"];
     
    
     [GJOutings registerSubclass];

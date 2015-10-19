@@ -11,7 +11,7 @@
 @interface GJOutings : PFObject <PFSubclassing>
 
 @property (nonatomic) NSString *outingName;
-@property (nonatomic) NSDate *createdAt;
+@property (nonatomic) NSDate *createdDate;
 @property (nonatomic) NSMutableArray <GJEntry *> *entriesArray;
 
 + (NSString *)parseClassName;

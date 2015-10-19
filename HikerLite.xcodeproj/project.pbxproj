@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B7D1C1A1BD2F75F00406412 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C161BD2F75F00406412 /* Entry.m */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C1B1BD2F75F00406412 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C181BD2F75F00406412 /* EntryCell.m */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C1C1BD2F75F00406412 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C191BD2F75F00406412 /* EntryCell.xib */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C1F1BD2F79E00406412 /* TripCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -51,8 +50,6 @@
 
 /* Begin PBXFileReference section */
 		0C8E718DDC744BFA3EAAA868 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		3B7D1C151BD2F75F00406412 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		3B7D1C161BD2F75F00406412 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		3B7D1C171BD2F75F00406412 /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
 		3B7D1C181BD2F75F00406412 /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
 		3B7D1C191BD2F75F00406412 /* EntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
@@ -177,8 +174,6 @@
 			children = (
 				C7A6EACA1BD2E59E0064BD4A /* AppDelegate.h */,
 				C7A6EACB1BD2E59E0064BD4A /* AppDelegate.m */,
-				3B7D1C151BD2F75F00406412 /* Entry.h */,
-				3B7D1C161BD2F75F00406412 /* Entry.m */,
 				3B7D1C171BD2F75F00406412 /* EntryCell.h */,
 				3B7D1C181BD2F75F00406412 /* EntryCell.m */,
 				3B7D1C191BD2F75F00406412 /* EntryCell.xib */,
@@ -319,7 +314,7 @@
 				TargetAttributes = {
 					C7A6EAC31BD2E59E0064BD4A = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3L76772298;
+						DevelopmentTeam = 3HZSHG8SUA;
 					};
 					C7A6EADC1BD2E59E0064BD4A = {
 						CreatedOnToolsVersion = 7.0;
@@ -440,7 +435,6 @@
 				3B7D1C1B1BD2F75F00406412 /* EntryCell.m in Sources */,
 				C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */,
 				3B7D1C271BD3EE4500406412 /* TextEntryViewController.m in Sources */,
-				3B7D1C1A1BD2F75F00406412 /* Entry.m in Sources */,
 				3B7D1C2D1BD43E6900406412 /* OutingCell.m in Sources */,
 				C7A6EB0F1BD409E90064BD4A /* GMSMarker+GJEntryArray.m in Sources */,
 				C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */,
@@ -595,7 +589,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HikerLite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.vhart2.HikerLite;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.elbercarneiro.HikerLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -611,7 +605,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HikerLite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.vhart2.HikerLite;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.elbercarneiro.HikerLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
