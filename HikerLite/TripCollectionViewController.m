@@ -6,13 +6,15 @@
 //  Copyright © 2015 Elber Carneiro. All rights reserved.
 //
 
-#import "TripCollectionViewController.h"
 #import "EntryCell.h"
-#import "TextEntryViewController.h"
+#import "HLMapView.h"
 #import "LiquidFloatingActionButton-Swift.h"
+#import "TextEntryViewController.h"
+#import "TripCollectionViewController.h"
+
 #import <AFNetworking/AFNetworking.h>
+#import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-@import AVFoundation;
 
 @interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -223,6 +225,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             [self performSegueWithIdentifier:@"textSegue" sender:self];
             break;
         case 2:
+            [self performSegueWithIdentifier:@"mapSegue" sender:self];
             break;
         default:
             break;
@@ -344,37 +347,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
-
 #pragma mark - Camera and Video Methods
 
 - (void)cameraAction {
@@ -426,8 +398,18 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     TextEntryViewController *vc = (TextEntryViewController *) [[segue destinationViewController] topViewController];
-    vc.currentOuting = self.currentOuting;
-    vc.locationManager = self.locationManager;
+    
+    if ([segue.identifier isEqualToString:@"textSegue"]) {
+        
+        vc.currentOuting = self.currentOuting;
+        vc.locationManager = self.locationManager;
+        
+    } else if ([segue.identifier isEqualToString:@"mapSegue"]) {
+        
+        vc.currentOuting = self.currentOuting;
+        
+    }
+
 }
 
 

@@ -32,7 +32,7 @@
 
 - (void)setUpMapsAndMarkers{
     
-    self.allEntries = [[NSMutableArray alloc] initWithArray:self.currentOuting.entriesArray copyItems:YES];
+    self.allEntries = [[NSMutableArray alloc] initWithArray:self.currentOuting.entriesArray];
     
     [self makeSectionalMarkersForMap];
     
