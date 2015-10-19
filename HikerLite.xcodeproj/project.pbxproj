@@ -16,7 +16,7 @@
 		3B7D1C2A1BD4249700406412 /* HLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C291BD4249700406412 /* HLMapView.m */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C2D1BD43E6900406412 /* OutingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C2C1BD43E6900406412 /* OutingCell.m */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C2F1BD43E7B00406412 /* OutingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */; settings = {ASSET_TAGS = (); }; };
-		3B7D1C321BD43FF100406412 /* OutingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C311BD43FF100406412 /* OutingsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C351BD51CCB00406412 /* OutingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C341BD51CCB00406412 /* OutingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B7711B1F931201E40D1551B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35CDD57FC026BC52468D2A5 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C76CA15F1BD47B0D00981F39 /* GMSMarker_WithArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C76CA15E1BD47B0D00981F39 /* GMSMarker_WithArray.m */; settings = {ASSET_TAGS = (); }; };
 		C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAC81BD2E59E0064BD4A /* main.m */; };
@@ -65,8 +65,8 @@
 		3B7D1C2B1BD43E6900406412 /* OutingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutingCell.h; sourceTree = "<group>"; };
 		3B7D1C2C1BD43E6900406412 /* OutingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutingCell.m; sourceTree = "<group>"; };
 		3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutingCell.xib; sourceTree = "<group>"; };
-		3B7D1C301BD43FF100406412 /* OutingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutingsTableViewController.h; sourceTree = "<group>"; };
-		3B7D1C311BD43FF100406412 /* OutingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutingsTableViewController.m; sourceTree = "<group>"; };
+		3B7D1C331BD51CCB00406412 /* OutingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutingsViewController.h; sourceTree = "<group>"; };
+		3B7D1C341BD51CCB00406412 /* OutingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutingsViewController.m; sourceTree = "<group>"; };
 		8454CEDF3E921FC6E6CE073A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A35CDD57FC026BC52468D2A5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76CA15C1BD4762D00981F39 /* GMSMarker_GJEntriesArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSMarker_GJEntriesArray.h; sourceTree = "<group>"; };
@@ -190,8 +190,8 @@
 				3B7D1C2B1BD43E6900406412 /* OutingCell.h */,
 				3B7D1C2C1BD43E6900406412 /* OutingCell.m */,
 				3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */,
-				3B7D1C301BD43FF100406412 /* OutingsTableViewController.h */,
-				3B7D1C311BD43FF100406412 /* OutingsTableViewController.m */,
+				3B7D1C331BD51CCB00406412 /* OutingsViewController.h */,
+				3B7D1C341BD51CCB00406412 /* OutingsViewController.m */,
 				3B7D1C201BD2F7CB00406412 /* Resources */,
 				C7A6EAD01BD2E59E0064BD4A /* Main.storyboard */,
 				C7A6EAD31BD2E59E0064BD4A /* Assets.xcassets */,
@@ -321,7 +321,7 @@
 				TargetAttributes = {
 					C7A6EAC31BD2E59E0064BD4A = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3L76772298;
+						DevelopmentTeam = 3HZSHG8SUA;
 					};
 					C7A6EADC1BD2E59E0064BD4A = {
 						CreatedOnToolsVersion = 7.0;
@@ -449,8 +449,8 @@
 				C76CA15F1BD47B0D00981F39 /* GMSMarker_WithArray.m in Sources */,
 				3B7D1C2A1BD4249700406412 /* HLMapView.m in Sources */,
 				C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */,
+				3B7D1C351BD51CCB00406412 /* OutingsViewController.m in Sources */,
 				3B7D1C1F1BD2F79E00406412 /* TripCollectionViewController.m in Sources */,
-				3B7D1C321BD43FF100406412 /* OutingsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,7 +642,7 @@
 					"\"SystemConfiguration\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.varindra.HikerLite;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.elberdev.HikerLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -658,7 +658,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HikerLite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.varindra.HikerLite;
+				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.elberdev.HikerLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

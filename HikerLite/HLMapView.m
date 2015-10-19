@@ -22,17 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss:)];
     [self setUpMapsAndMarkers];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)setUpMapsAndMarkers{
+- (void)setUpMapsAndMarkers {
     
     self.allEntries = [[NSMutableArray alloc] initWithArray:self.currentOuting.entriesArray];
     [self.allEntries removeObjectIdenticalTo:[NSNull null]];
@@ -57,17 +52,13 @@
     //    marker.snippet = @"Australia";
     marker.map = self.mapView_;
     
-    
-    
     for (GMSMarker_WithArray *marker in self.markersArray) {
         marker.map = self.mapView_;
         marker.appearAnimation = kGMSMarkerAnimationPop;
     }
-    
-    
 }
 
-- (void)dismiss:(UIBarButtonItem *)doneButton{
+- (void)dismiss:(UIBarButtonItem *)doneButton {
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -98,7 +89,7 @@
     return center;
 }
 
-- (void)makeSectionalMarkersForMap{
+- (void)makeSectionalMarkersForMap {
     
     while (self.allEntries.count != 0) {
         
@@ -130,11 +121,9 @@
                     break;
                 }
             }
-            
         }
         
         [self.markersArray addObject:newMarker];
-        
     }
 }
 

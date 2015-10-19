@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Trip Collection View Controller-->
@@ -22,6 +23,7 @@
                     <connections>
                         <segue destination="9Kk-Kh-B2o" kind="presentation" identifier="textSegue" id="CgI-bA-L4r"/>
                         <segue destination="gi6-LX-Nnp" kind="presentation" identifier="mapSegue" id="yCY-V1-edJ"/>
+                        <segue destination="sqi-IV-BsT" kind="presentation" identifier="outingsSegue" id="pzN-PS-LaD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -107,29 +109,6 @@
             </objects>
             <point key="canvasLocation" x="906" y="1015"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="Sjb-sa-ahH">
-            <objects>
-                <tableViewController id="jvM-5C-zD7" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wwx-8T-DIF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="jvM-5C-zD7" id="CnG-Xh-ecf"/>
-                            <outlet property="delegate" destination="jvM-5C-zD7" id="ZYu-eg-fud"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="2JF-f0-hKW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="NqS-o0-ioV"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fbl-3l-gsl"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P5a-Qo-dvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="906" y="1727"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lvw-7f-x0V">
             <objects>
@@ -161,9 +140,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="h1y-x1-JeG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="CKX-rz-aMD"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="h1y-x1-JeG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEh-LE-elx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,12 +156,86 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="jvM-5C-zD7" kind="relationship" relationship="rootViewController" id="ysg-is-kZi"/>
+                        <segue destination="kEB-1F-a95" kind="relationship" relationship="rootViewController" id="UTf-1s-Bjm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3J-nB-AUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="245" y="1727"/>
+        </scene>
+        <!--Outings View Controller-->
+        <scene sceneID="nxd-Zs-v0G">
+            <objects>
+                <viewController id="kEB-1F-a95" customClass="OutingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BLD-uU-oJX"/>
+                        <viewControllerLayoutGuide type="bottom" id="CDD-hq-v6M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fcK-y1-mUu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mku-di-Vqv">
+                                <rect key="frame" x="16" y="80" width="568" height="120"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zyQ-ek-IYF">
+                                        <rect key="frame" x="16" y="45" width="480" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqS-JA-g31">
+                                        <rect key="frame" x="504" y="32" width="56" height="56"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="fHm-Qn-RfN"/>
+                                            <constraint firstAttribute="height" constant="56" id="uHm-HT-YxI"/>
+                                        </constraints>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="didTapSave:" destination="kEB-1F-a95" eventType="touchUpInside" id="IyF-GG-YMF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="fqS-JA-g31" firstAttribute="leading" secondItem="zyQ-ek-IYF" secondAttribute="trailing" constant="8" id="3B3-EV-o3N"/>
+                                    <constraint firstItem="fqS-JA-g31" firstAttribute="centerY" secondItem="mku-di-Vqv" secondAttribute="centerY" id="D8r-wJ-T22"/>
+                                    <constraint firstAttribute="trailing" secondItem="fqS-JA-g31" secondAttribute="trailing" constant="8" id="E6K-ak-lIC"/>
+                                    <constraint firstItem="zyQ-ek-IYF" firstAttribute="leading" secondItem="mku-di-Vqv" secondAttribute="leading" constant="16" id="IcP-8u-Qxh"/>
+                                    <constraint firstItem="zyQ-ek-IYF" firstAttribute="centerY" secondItem="mku-di-Vqv" secondAttribute="centerY" id="qAu-rS-vbw"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1D-1P-hi0">
+                                <rect key="frame" x="16" y="216" width="568" height="368"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mku-di-Vqv" firstAttribute="leading" secondItem="fcK-y1-mUu" secondAttribute="leading" constant="16" id="10c-Eb-Fje"/>
+                            <constraint firstAttribute="trailing" secondItem="h1D-1P-hi0" secondAttribute="trailing" constant="16" id="2Nn-gB-shd"/>
+                            <constraint firstAttribute="trailing" secondItem="mku-di-Vqv" secondAttribute="trailing" constant="16" id="35N-SJ-vm1"/>
+                            <constraint firstItem="h1D-1P-hi0" firstAttribute="leading" secondItem="fcK-y1-mUu" secondAttribute="leading" constant="16" id="4ex-Jt-vHI"/>
+                            <constraint firstItem="h1D-1P-hi0" firstAttribute="top" secondItem="mku-di-Vqv" secondAttribute="bottom" constant="16" id="7d7-Kc-xfC"/>
+                            <constraint firstItem="CDD-hq-v6M" firstAttribute="top" secondItem="h1D-1P-hi0" secondAttribute="bottom" constant="16" id="nQb-jg-wU1"/>
+                            <constraint firstItem="mku-di-Vqv" firstAttribute="height" secondItem="fcK-y1-mUu" secondAttribute="height" multiplier="0.2" id="ntr-cq-d3E"/>
+                            <constraint firstItem="mku-di-Vqv" firstAttribute="top" secondItem="BLD-uU-oJX" secondAttribute="bottom" constant="16" id="usw-7c-Uro"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uvc-dQ-p8t"/>
+                    <connections>
+                        <outlet property="createOutingName" destination="zyQ-ek-IYF" id="1LV-25-SL5"/>
+                        <outlet property="createOutingView" destination="mku-di-Vqv" id="GiI-Jp-qc9"/>
+                        <outlet property="saveButton" destination="fqS-JA-g31" id="cHF-Ks-qY8"/>
+                        <outlet property="tableView" destination="h1D-1P-hi0" id="seH-ar-bYc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qj-yN-swr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="1727"/>
         </scene>
     </scenes>
 </document>

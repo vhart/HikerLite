@@ -10,4 +10,9 @@
 
 @interface OutingCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *previewIcon;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkmark;
+
 @end

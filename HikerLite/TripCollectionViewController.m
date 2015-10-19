@@ -9,6 +9,7 @@
 #import "EntryCell.h"
 #import "HLMapView.h"
 #import "LiquidFloatingActionButton-Swift.h"
+#import "OutingsViewController.h"
 #import "TextEntryViewController.h"
 #import "TripCollectionViewController.h"
 
@@ -26,12 +27,14 @@
 @property (nonatomic) NSString *forecast;
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) UIImagePickerController *imagePicker;
+@property (nonatomic) NSInteger selectedOuting;
 
 @end
 
 @implementation TripCollectionViewController
 
 static NSString * const reuseIdentifier = @"entryCellIdentifier";
+static NSString * const selectedOuting = @"selectedOuting";
 static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 #pragma mark - Lifecycle methods
@@ -49,7 +52,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     [self setupImagePicker];
     
-    [self fetchOutings];
+    [self fetchSelectedOuting];
     
     [self fetchWeatherData];
 }
@@ -57,6 +60,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.currentOuting = nil;
     [self fetchOutings];
     
     [self.floatingActionButton close];
@@ -145,6 +149,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 }
 
+#pragma mark - Data fetching
+
 - (void)fetchWeatherData {
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
@@ -184,10 +190,10 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     [query includeKey:@"entriesArray"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count!=0) {
-            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdDate" ascending:NO];
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdDate" ascending:YES];
             [objects sortedArrayUsingDescriptors:@[descriptor]];
             
-            self.currentOuting = [objects lastObject];
+            self.currentOuting = objects[self.selectedOuting];
             NSLog(@"entries count: %d", self.currentOuting.entriesArray.count);
             [self.collectionView reloadData];
             
@@ -196,11 +202,23 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             self.currentOuting = [[GJOutings alloc]initWithNewEntriesArray];
             self.currentOuting.createdDate = [NSDate date];
             self.currentOuting.outingName = @"Demo Outing";
+            
             [self.currentOuting saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 NSLog(@"Outing created");
             }];
         }
     }];
+}
+
+- (void)fetchSelectedOuting {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:selectedOuting] == nil) {
+        self.selectedOuting = 0;
+        [[NSUserDefaults standardUserDefaults] setValue:@(self.selectedOuting) forKey:selectedOuting];
+    } else {
+        self.selectedOuting = [[[NSUserDefaults standardUserDefaults] valueForKey:selectedOuting] integerValue];
+    }
+    
+    NSLog(@"self.selectedOuting: %d", self.selectedOuting);
 }
 
 #pragma mark - LiquidFloatingActionButtonDataSource
@@ -228,6 +246,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             [self performSegueWithIdentifier:@"mapSegue" sender:self];
             break;
         default:
+            [self performSegueWithIdentifier:@"outingsSegue" sender:self];
             break;
     }
     
@@ -291,6 +310,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     if ([self.currentOuting.entriesArray[indexPath.row].mediaType  isEqualToString:@"public.image"]) {
         
         cell.photoView.hidden = NO;
+        cell.descriptionContainer.hidden = YES;
         cell.descriptionLabel.hidden = YES;
         cell.videoView.hidden = YES;
         
@@ -304,6 +324,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     } else if ([self.currentOuting.entriesArray[indexPath.row].mediaType isEqualToString:@"public.video"]) {
         
         cell.photoView.hidden = YES;
+        cell.descriptionContainer.hidden = YES;
         cell.descriptionLabel.hidden = YES;
         cell.videoView.hidden = NO;
         
@@ -335,10 +356,14 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     } else {
         
         cell.photoView.hidden = YES;
+        cell.descriptionContainer.hidden = NO;
         cell.descriptionLabel.hidden = NO;
         cell.videoView.hidden = YES;
         
-        cell.descriptionLabel.layer.cornerRadius = 10;
+        cell.descriptionContainer.layer.cornerRadius = 10;
+        cell.descriptionContainer.layer.borderWidth = 1;
+        // pick a better green
+        cell.descriptionContainer.layer.borderColor = [UIColor greenColor].CGColor;
         
         cell.descriptionLabel.text = [self.currentOuting.entriesArray[indexPath.row] textMedia];
     }
@@ -397,19 +422,18 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    TextEntryViewController *vc = (TextEntryViewController *) [[segue destinationViewController] topViewController];
-    
     if ([segue.identifier isEqualToString:@"textSegue"]) {
         
+        TextEntryViewController *vc = (TextEntryViewController *) [[segue destinationViewController] topViewController];
         vc.currentOuting = self.currentOuting;
         vc.locationManager = self.locationManager;
         
     } else if ([segue.identifier isEqualToString:@"mapSegue"]) {
         
+        HLMapView *vc = (HLMapView *) [[segue destinationViewController] topViewController];
         vc.currentOuting = self.currentOuting;
         
     }
-
 }
 
 

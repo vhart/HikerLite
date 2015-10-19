@@ -18,13 +18,25 @@
                         <rect key="frame" x="16" y="32" width="408" height="198"/>
                         <animations/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flm-wS-h5F">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-MB-GTB">
                         <rect key="frame" x="16" y="32" width="408" height="198"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flm-wS-h5F">
+                                <rect key="frame" x="16" y="16" width="376" height="166"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Flm-wS-h5F" secondAttribute="trailing" constant="16" id="0Gv-7U-Ujx"/>
+                            <constraint firstAttribute="bottom" secondItem="Flm-wS-h5F" secondAttribute="bottom" constant="16" id="IER-qy-LHI"/>
+                            <constraint firstItem="Flm-wS-h5F" firstAttribute="top" secondItem="EC3-MB-GTB" secondAttribute="top" constant="16" id="cpq-RS-Haw"/>
+                            <constraint firstItem="Flm-wS-h5F" firstAttribute="leading" secondItem="EC3-MB-GTB" secondAttribute="leading" constant="16" id="hNW-Po-1sb"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="169" translatesAutoresizingMaskIntoConstraints="NO" id="5yY-sq-Umm">
                         <rect key="frame" x="16" y="32" width="408" height="198"/>
                         <animations/>
@@ -36,20 +48,21 @@
             <animations/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="5yY-sq-Umm" secondAttribute="bottom" constant="80" id="64O-w3-Ajs"/>
-                <constraint firstAttribute="bottom" secondItem="Flm-wS-h5F" secondAttribute="bottom" constant="80" id="7Xy-lG-vBM"/>
                 <constraint firstItem="5yY-sq-Umm" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="FNP-N3-26K"/>
+                <constraint firstAttribute="trailing" secondItem="EC3-MB-GTB" secondAttribute="trailing" constant="16" id="RQr-SF-KUW"/>
+                <constraint firstAttribute="bottom" secondItem="EC3-MB-GTB" secondAttribute="bottom" constant="80" id="Tra-58-ro5"/>
                 <constraint firstAttribute="bottom" secondItem="RsZ-KV-rRJ" secondAttribute="bottom" constant="80" id="U4R-KG-qqj"/>
+                <constraint firstItem="EC3-MB-GTB" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="Vrk-Zr-o42"/>
                 <constraint firstItem="RsZ-KV-rRJ" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="XjJ-Om-uEJ"/>
+                <constraint firstItem="EC3-MB-GTB" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="ZOC-lu-6Pg"/>
                 <constraint firstItem="RsZ-KV-rRJ" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="dvH-m4-Wda"/>
                 <constraint firstAttribute="trailing" secondItem="5yY-sq-Umm" secondAttribute="trailing" constant="16" id="edC-re-oks"/>
                 <constraint firstAttribute="trailing" secondItem="RsZ-KV-rRJ" secondAttribute="trailing" constant="16" id="hBa-Wm-mzl"/>
-                <constraint firstItem="Flm-wS-h5F" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="haA-kb-weW"/>
                 <constraint firstItem="5yY-sq-Umm" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="lpA-xl-zNx"/>
-                <constraint firstItem="Flm-wS-h5F" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="oB0-Af-5gv"/>
-                <constraint firstAttribute="trailing" secondItem="Flm-wS-h5F" secondAttribute="trailing" constant="16" id="ufw-6X-M1Y"/>
             </constraints>
             <size key="customSize" width="440" height="310"/>
             <connections>
+                <outlet property="descriptionContainer" destination="EC3-MB-GTB" id="Bk0-NB-GjF"/>
                 <outlet property="descriptionLabel" destination="Flm-wS-h5F" id="bLx-Qv-KAF"/>
                 <outlet property="photoView" destination="RsZ-KV-rRJ" id="3Dc-2b-BoP"/>
                 <outlet property="videoView" destination="5yY-sq-Umm" id="qIf-hZ-YLX"/>
