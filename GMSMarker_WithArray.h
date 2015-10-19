@@ -1,5 +1,5 @@
 //
-//  GMSMarker+GJEntryArray.h
+//  GMSMarker_WithArray.h
 //  HikerLite
 //
 //  Created by Varindra Hart on 10/18/15.
@@ -7,9 +7,8 @@
 //
 
 #import <GoogleMaps/GoogleMaps.h>
-#import "GJOutings.h"
+#import "GJEntry.h"
 
-@interface GMSMarker (GJEntryArray)
-
-
+@interface GMSMarker_WithArray : GMSMarker
+@property (nonatomic) NSMutableArray <GJEntry *> *entriesArrayForLocation;
 @end

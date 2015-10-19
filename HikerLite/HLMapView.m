@@ -9,6 +9,8 @@
 #import "HLMapView.h"
 @import GoogleMaps;
 #import "GMSMarker+GJEntryArray.h"
+#import "GMSMarker_GJEntriesArray.h"
+#import "GMSMarker_WithArray.h"
 
 @interface HLMapView () <GMSMapViewDelegate>
 @property (nonatomic) GMSMapView *mapView_;
@@ -33,30 +35,33 @@
 - (void)setUpMapsAndMarkers{
     
     self.allEntries = [[NSMutableArray alloc] initWithArray:self.currentOuting.entriesArray];
+    [self.allEntries removeObjectIdenticalTo:[NSNull null]];
     
+    self.markersArray = [NSMutableArray new];
     [self makeSectionalMarkersForMap];
     
 //    CLLocationCoordinate2D center = [self findCenterForMarkers];
     
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:44.9
-                                                            longitude:-73.4
-                                                                 zoom:15];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:40.744
+                                                            longitude:-73.938
+                                                                 zoom:12];
     self.mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.mapView_.myLocationEnabled = YES;
     //self.viewForMap = self.mapView_;
     self.view = self.mapView_;
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(44.9,-73.4);
+    marker.position = CLLocationCoordinate2DMake(40.744,-73.938);
     //    marker.title = @"Sydney";
     //    marker.snippet = @"Australia";
     marker.map = self.mapView_;
     
     
     
-    for (GMSMarker *marker in self.markersArray) {
+    for (GMSMarker_WithArray *marker in self.markersArray) {
         marker.map = self.mapView_;
+        marker.appearAnimation = kGMSMarkerAnimationPop;
     }
     
     
@@ -97,7 +102,7 @@
     
     while (self.allEntries.count != 0) {
         
-        GMSMarker *newMarker = [[GMSMarker alloc]init];
+        GMSMarker_WithArray *newMarker = [[GMSMarker_WithArray alloc]init];
         newMarker.entriesArrayForLocation = [NSMutableArray new];
         
         GJEntry *topEntry = self.allEntries.firstObject;
@@ -107,10 +112,25 @@
         [self.allEntries removeObject:topEntry];
         
         for (GJEntry *entry in self.allEntries) {
-            if ([newMarker.entriesArrayForLocation.firstObject.location distanceInKilometersTo:entry.location] < .25f) {
+           
+            
+            GJEntry *comparisonEntry = newMarker.entriesArrayForLocation.firstObject;
+            if (!(entry ==NULL) ) {
+                if([comparisonEntry.location distanceInKilometersTo:entry.location] < .25f)
                 [newMarker.entriesArrayForLocation addObject:entry];
-                [self.allEntries removeObject:entry];
             }
+        }
+        
+        for (GJEntry *entry in newMarker.entriesArrayForLocation) {
+            
+            for (int i =0 ; i<self.allEntries.count; i++) {
+                GJEntry *oldEntry = self.allEntries[i];
+                if (oldEntry == entry) {
+                    [self.allEntries removeObject:oldEntry];
+                    break;
+                }
+            }
+            
         }
         
         [self.markersArray addObject:newMarker];

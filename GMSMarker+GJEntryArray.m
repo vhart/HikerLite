@@ -10,7 +10,7 @@
 
 @implementation GMSMarker (GJEntryArray)
 
-@dynamic entriesArrayForLocation;
+
 
 //- (void)setEntriesArrayForLocation:(NSMutableArray<GJEntry *> *)entriesArrayForLocation {
 //    self.entriesArrayForLocation = entriesArrayForLocation;

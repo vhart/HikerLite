@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "GJEntry.h"
 #import "GJOutings.h"
-
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -27,7 +27,7 @@
     [GJOutings registerSubclass];
     [GJEntry registerSubclass];
 
-    
+    [GMSServices provideAPIKey:@"AIzaSyDWOxAPyTwNK28M-bUSxv0UfRXywVlwYKQ"];
     // Override point for customization after application launch.
     return YES;
 }
