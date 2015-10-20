@@ -33,7 +33,7 @@
 - (void)fileFromVideoURL:(NSURL *)url{
     
     NSData *data = [NSData dataWithContentsOfURL:url];
-    self.file = [PFFile fileWithData:data];
+    self.file = [PFFile fileWithData:data contentType:@"video/mov"];
     
 }
 

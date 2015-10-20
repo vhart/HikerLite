@@ -144,7 +144,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         [self.locationManager startUpdatingLocation];
     }
-
+    
 }
 
 - (void)setupImagePicker{
@@ -153,7 +153,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *)kUTTypeMovie, (NSString *) kUTTypeImage ,nil];
     self.imagePicker.videoMaximumDuration = 5.0f;
     self.imagePicker.videoQuality = UIImagePickerControllerQualityTypeMedium;
-
+    
 }
 
 - (void)setupForecastView {
@@ -227,8 +227,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             [objects sortedArrayUsingDescriptors:@[descriptor]];
             
             self.currentOuting = objects[self.selectedOuting];
-            NSLog(@"outing name: %@", self.currentOuting.outingName);
-            NSLog(@"entries count: %lu", self.currentOuting.entriesArray.count);
+            NSLog(@"entries count: %ld", self.currentOuting.entriesArray.count);
+            [self.currentOuting.entriesArray removeObjectIdenticalTo:[NSNull null]];
             [self.collectionView reloadData];
             
         } else {
@@ -242,6 +242,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             }];
         }
     }];
+
 }
 
 - (void)fetchSelectedOuting {
@@ -252,7 +253,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         self.selectedOuting = [[[NSUserDefaults standardUserDefaults] valueForKey:selectedOuting] integerValue];
     }
     
-    NSLog(@"self.selectedOuting: %lu", self.selectedOuting);
+    NSLog(@"self.selectedOuting: %ld", self.selectedOuting);
 }
 
 #pragma mark - LiquidFloatingActionButtonDataSource
@@ -381,7 +382,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             NSLog(@"Image loaded!");
         }];
         
-    } else if ([self.currentOuting.entriesArray[indexPath.row].mediaType isEqualToString:@"public.video"]) {
+    } else if ([self.currentOuting.entriesArray[indexPath.row].mediaType isEqualToString:@"public.movie"]) {
         
         cell.photoView.hidden = YES;
         cell.descriptionContainer.hidden = YES;
@@ -390,29 +391,40 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         cell.videoView.layer.cornerRadius = 10;
         
-        // ASYNC LOADING:
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        GJEntry *videoEntry = self.currentOuting.entriesArray[indexPath.row];
         
-        dispatch_async(queue, ^{
+        [videoEntry.file getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             
-            AVAsset *asset = [AVAsset assetWithURL:[self.currentOuting.entriesArray[indexPath.row] urlFromMediaFile]];
-            AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
-            
-            dispatch_sync(dispatch_get_main_queue(), ^{
+            if (data) {
                 
-                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-                
-                AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
-                //NSLog(@"%@", CGRectCreateDictionaryRepresentation(cell.videoView.bounds));
-                layer.frame = cell.videoView.bounds;
-                layer.videoGravity = AVLayerVideoGravityResizeAspect;
-                
-                [player play];
-                
-                [cell.videoView.layer addSublayer:layer];
-            });
-        });
+                NSString *urlString = [[NSString alloc]initWithData:data encoding:NSUTF16StringEncoding];
+                NSURL *url = [NSURL URLWithString:urlString];
         
+                // ASYNC LOADING:
+        
+                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                
+                dispatch_async(queue, ^{
+                    NSLog(@"%@",videoEntry.file.url);
+                    AVAsset *asset = [AVAsset assetWithURL:url];
+                    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
+                    
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        
+                        AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+                        
+                        AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
+                        //NSLog(@"%@", CGRectCreateDictionaryRepresentation(cell.videoView.bounds));
+                        layer.frame = cell.videoView.bounds;
+                        layer.videoGravity = AVLayerVideoGravityResizeAspect;
+                        
+                        [player play];
+                        
+                        [cell.videoView.layer addSublayer:layer];
+                    });
+                });
+            }
+        }];
     } else {
         
         cell.photoView.hidden = YES;
@@ -429,7 +441,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     }
     
     return cell;
-
+    
 }
 
 #pragma mark - Camera and Video Methods
