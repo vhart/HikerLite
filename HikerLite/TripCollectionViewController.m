@@ -162,6 +162,14 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     self.forecastContainer.layer.cornerRadius = 10;
     self.forecastContainer.layer.borderWidth = 1;
     self.forecastContainer.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    CGRect newFrame = CGRectMake(16, self.view.frame.size.height - 64, 200, 80);
+    [UIView performWithoutAnimation:^{
+        self.forecastContainer.frame = newFrame;
+    }];
+    
+    
+    
 }
 
 - (void)setupNotifications {
@@ -293,6 +301,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     CGRect newFrame = CGRectMake(16, self.view.frame.size.height + 64, 200, 80);
     
+    NSLog(@"before open self.view.frame: %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"before open self.forecastContainer.frame: %@", NSStringFromCGRect(self.forecastContainer.frame));
     if (!CGRectEqualToRect(newFrame, self.forecastContainer.frame)) {
         [UIView animateWithDuration:1 animations:^{
             self.forecastContainer.frame = newFrame;
@@ -305,6 +315,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     CGRect newFrame = CGRectMake(16, self.view.frame.size.height - 64, 200, 80);
     
+    NSLog(@"before close self.view.frame: %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"before close self.forecastContainer.frame: %@", NSStringFromCGRect(self.forecastContainer.frame));
     if (!CGRectEqualToRect(newFrame, self.forecastContainer.frame)) {
         [UIView animateWithDuration:1 animations:^{
             self.forecastContainer.frame = newFrame;
