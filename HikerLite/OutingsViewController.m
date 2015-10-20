@@ -62,7 +62,7 @@ static NSString * const selectedOuting = @"selectedOuting";
 
 - (void)fetchOutings {
     PFQuery *query = [PFQuery queryWithClassName:@"GJOutings"];
-    //[query includeKey:@"entriesArray"];
+    [query includeKey:@"entriesArray"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count!=0) {
             
@@ -140,7 +140,7 @@ static NSString * const selectedOuting = @"selectedOuting";
     
     OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"Changed selected outing to %d", indexPath.row);
+    NSLog(@"Changed selected outing to %ld", indexPath.row);
     cell.checkmark.hidden = NO;
 }
 
@@ -148,7 +148,7 @@ static NSString * const selectedOuting = @"selectedOuting";
     
     OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"Changed selected outing to %d", indexPath.row);
+    NSLog(@"Changed selected outing to %ld", indexPath.row);
     cell.checkmark.hidden = YES;
 }
 

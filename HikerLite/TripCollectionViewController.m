@@ -19,6 +19,7 @@
 
 @interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *collectionViewContainer;
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray <LiquidFloatingCell *> *cells;
 @property (nonatomic) LiquidFloatingActionButton *floatingActionButton;
@@ -28,6 +29,9 @@
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) UIImagePickerController *imagePicker;
 @property (nonatomic) NSInteger selectedOuting;
+@property (weak, nonatomic) IBOutlet UIImageView *forecastImage;
+@property (weak, nonatomic) IBOutlet UIView *forecastContainer;
+@property (weak, nonatomic) IBOutlet UILabel *forecastTemp;
 
 @end
 
@@ -52,15 +56,18 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     [self setupImagePicker];
     
-    [self fetchSelectedOuting];
+    [self setupNotifications];
     
-    [self fetchWeatherData];
+    [self setupForecastView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.currentOuting = nil;
+    [self fetchWeatherData];
+    
+    [self fetchSelectedOuting];
+    
     [self fetchOutings];
     
     [self.floatingActionButton close];
@@ -85,7 +92,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     [self.collectionView registerNib:[UINib nibWithNibName:@"EntryCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
     // add collection view to view controller
-    [self.view addSubview:self.collectionView];
+    [self.collectionViewContainer addSubview:self.collectionView];
 }
 
 - (void)setupFloatingActionButton {
@@ -149,13 +156,33 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 }
 
+- (void)setupForecastView {
+    
+    self.forecastContainer.backgroundColor = [UIColor whiteColor];
+    self.forecastContainer.layer.cornerRadius = 10;
+    self.forecastContainer.layer.borderWidth = 1;
+    self.forecastContainer.layer.borderColor = [UIColor blackColor].CGColor;
+}
+
+- (void)setupNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(liquidButtonOpened:)
+                                                 name:@"LiquidOpen"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(liquidButtonClosed:)
+                                                 name:@"LiquidClose"
+                                               object:nil];
+}
+
 #pragma mark - Data fetching
 
 - (void)fetchWeatherData {
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     
-    NSString *stringURL = [NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%f,%f", apiKey,self.longitude, self.latitude];
+    NSString *stringURL = [NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%f,%f", apiKey,self.latitude, self.longitude];
     NSLog(@"%@", stringURL);
     
     [manager GET:stringURL  parameters: nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject)
@@ -167,13 +194,19 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
          NSDictionary *hourlyData = responseObject[@"hourly"][@"data"];
          NSLog(@"hourly data: %@", hourlyData);
          
-         
          for (NSDictionary *data in hourlyData) {
              NSTimeInterval dataTime = [data[@"time"] doubleValue];
              if (dataTime > now) {
+                 
                  self.forecast = data[@"icon"];
+                 self.forecastImage.image = [UIImage imageNamed:self.forecast];
+                 [self.forecastImage setNeedsDisplay];
+                 
+                 self.forecastTemp.text = [NSString stringWithFormat:@"%@%@", data[@"temperature"], @"\u00B0"];
+                 
                  NSLog(@"dataTime: %f, forecast: %@", dataTime, self.forecast);
                  break;
+                 
              }
          }
          
@@ -194,7 +227,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             [objects sortedArrayUsingDescriptors:@[descriptor]];
             
             self.currentOuting = objects[self.selectedOuting];
-            NSLog(@"entries count: %d", self.currentOuting.entriesArray.count);
+            NSLog(@"outing name: %@", self.currentOuting.outingName);
+            NSLog(@"entries count: %lu", self.currentOuting.entriesArray.count);
             [self.collectionView reloadData];
             
         } else {
@@ -218,7 +252,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         self.selectedOuting = [[[NSUserDefaults standardUserDefaults] valueForKey:selectedOuting] integerValue];
     }
     
-    NSLog(@"self.selectedOuting: %d", self.selectedOuting);
+    NSLog(@"self.selectedOuting: %lu", self.selectedOuting);
 }
 
 #pragma mark - LiquidFloatingActionButtonDataSource
@@ -248,6 +282,32 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         default:
             [self performSegueWithIdentifier:@"outingsSegue" sender:self];
             break;
+    }
+    
+}
+
+#pragma mark - LiquidFloatingActionButton notification methods
+
+- (void)liquidButtonOpened:(LiquidFloatingActionButton *)sender {
+    
+    CGRect newFrame = CGRectMake(16, self.view.frame.size.height + 64, 200, 80);
+    
+    if (!CGRectEqualToRect(newFrame, self.forecastContainer.frame)) {
+        [UIView animateWithDuration:1 animations:^{
+            self.forecastContainer.frame = newFrame;
+        }];
+    }
+    
+}
+
+- (void)liquidButtonClosed:(LiquidFloatingActionButton *)sender {
+    
+    CGRect newFrame = CGRectMake(16, self.view.frame.size.height - 64, 200, 80);
+    
+    if (!CGRectEqualToRect(newFrame, self.forecastContainer.frame)) {
+        [UIView animateWithDuration:1 animations:^{
+            self.forecastContainer.frame = newFrame;
+        }];
     }
     
 }

@@ -13,11 +13,16 @@
 - (void)awakeFromNib {
     self.containerView.layer.cornerRadius = 10;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.checkmark.image = [UIImage imageNamed:@"checkmark"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    
+    if (selected) {
+        self.checkmark.image = [UIImage imageNamed:@"checkmark"];
+    } else {
+        self.checkmark.image = nil;
+    }
 }
 
 @end

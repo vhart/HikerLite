@@ -114,6 +114,8 @@ public class LiquidFloatingActionButton : UIView {
 
         self.baseView.open(cells)
         setNeedsDisplay()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("LiquidOpen", object: self)
     }
 
     // close all cells
@@ -124,6 +126,8 @@ public class LiquidFloatingActionButton : UIView {
     
         self.baseView.close(cellArray())
         setNeedsDisplay()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("LiquidClose", object: self)
     }
 
     // MARK: draw icon
