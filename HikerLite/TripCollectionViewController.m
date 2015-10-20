@@ -108,7 +108,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     self.floatingActionButton = [[LiquidFloatingActionButton alloc] initWithFrame:frame];
     self.floatingActionButton.delegate = self;
     self.floatingActionButton.dataSource = self;
-    
+    self.floatingActionButton.color = [UIColor colorWithRed:123/255.0 green:164/255.0 blue:28/255.0 alpha:1];
+    self.floatingActionButton.enableShadow = NO;
     self.cells = [[NSMutableArray alloc] init];
     
     LiquidFloatingCell *cellCamera = [[LiquidFloatingCell alloc] initWithIcon:[UIImage imageNamed:@"cameraIcon"]];
@@ -169,7 +170,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     }];
     
     
-    
+     
 }
 
 - (void)setupNotifications {
@@ -380,6 +381,16 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     EntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    // create effect
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    // add effect to an effect view
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = cell.backgroundIMageView.frame;
+    
+    // add the effect view to the image view
+    [cell.backgroundIMageView addSubview:effectView];
+    
     if ([self.currentOuting.entriesArray[indexPath.row].mediaType  isEqualToString:@"public.image"]) {
         
         cell.photoView.hidden = NO;
@@ -447,7 +458,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         cell.descriptionContainer.layer.cornerRadius = 10;
         cell.descriptionContainer.layer.borderWidth = 1;
         // pick a better green
-        cell.descriptionContainer.layer.borderColor = [UIColor greenColor].CGColor;
+        cell.descriptionContainer.layer.borderColor = [UIColor colorWithRed:112/255.0 green:142/255.0 blue:50/255.0 alpha:1].CGColor;
         
         cell.descriptionLabel.text = [self.currentOuting.entriesArray[indexPath.row] textMedia];
     }

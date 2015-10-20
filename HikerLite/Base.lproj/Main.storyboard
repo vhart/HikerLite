@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIl-kL-DcG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.48121658499846637" green="0.64186789772727271" blue="0.10961198089327379" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOz-LG-PgA">
                                 <rect key="frame" x="16" y="536" width="200" height="80"/>
@@ -64,7 +64,7 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.4823529411764706" green="0.64313725490196072" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eOz-LG-PgA" secondAttribute="trailing" constant="160" id="0x0-im-sVB"/>
                             <constraint firstAttribute="trailing" secondItem="wIl-kL-DcG" secondAttribute="trailing" id="8OR-0e-1oF"/>
@@ -136,7 +136,7 @@
                                     </textView>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="0.84676412399320855" blue="0.59179294151675355" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.76862745098039187" green="0.89293791118421051" blue="0.59215686274509804" alpha="0.41073690878378377" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="RIU-zu-4eX" firstAttribute="top" secondItem="aUo-Nj-xZg" secondAttribute="top" constant="8" id="J1P-aw-Ybg"/>
                                     <constraint firstAttribute="trailing" secondItem="RIU-zu-4eX" secondAttribute="trailing" constant="8" id="L3l-yp-MSm"/>
@@ -258,7 +258,9 @@
                                             <constraint firstAttribute="width" constant="56" id="fHm-Qn-RfN"/>
                                             <constraint firstAttribute="height" constant="56" id="uHm-HT-YxI"/>
                                         </constraints>
-                                        <state key="normal" title="Save"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.43746294261365248" green="0.55776515151515149" blue="0.19476189719811837" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="didTapSave:" destination="kEB-1F-a95" eventType="touchUpInside" id="IyF-GG-YMF"/>
                                         </connections>

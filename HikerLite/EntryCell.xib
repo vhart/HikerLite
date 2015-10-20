@@ -14,6 +14,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="440" height="310"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VLy-SX-f6t">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="310"/>
+                        <animations/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RsZ-KV-rRJ" customClass="PFImageView">
                         <rect key="frame" x="16" y="32" width="408" height="198"/>
                         <animations/>
@@ -46,9 +53,12 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <animations/>
+            <color key="backgroundColor" red="0.48121658499846637" green="0.44271689967105265" blue="0.10961198089327379" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="5yY-sq-Umm" secondAttribute="bottom" constant="80" id="64O-w3-Ajs"/>
                 <constraint firstItem="5yY-sq-Umm" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" constant="32" id="FNP-N3-26K"/>
+                <constraint firstAttribute="bottom" secondItem="VLy-SX-f6t" secondAttribute="bottom" id="Lo4-AH-ca4"/>
+                <constraint firstItem="VLy-SX-f6t" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" id="O6Q-6B-vru"/>
                 <constraint firstAttribute="trailing" secondItem="EC3-MB-GTB" secondAttribute="trailing" constant="16" id="RQr-SF-KUW"/>
                 <constraint firstAttribute="bottom" secondItem="EC3-MB-GTB" secondAttribute="bottom" constant="80" id="Tra-58-ro5"/>
                 <constraint firstAttribute="bottom" secondItem="RsZ-KV-rRJ" secondAttribute="bottom" constant="80" id="U4R-KG-qqj"/>
@@ -58,10 +68,13 @@
                 <constraint firstItem="RsZ-KV-rRJ" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="dvH-m4-Wda"/>
                 <constraint firstAttribute="trailing" secondItem="5yY-sq-Umm" secondAttribute="trailing" constant="16" id="edC-re-oks"/>
                 <constraint firstAttribute="trailing" secondItem="RsZ-KV-rRJ" secondAttribute="trailing" constant="16" id="hBa-Wm-mzl"/>
+                <constraint firstAttribute="trailing" secondItem="VLy-SX-f6t" secondAttribute="trailing" id="igi-CF-UOc"/>
                 <constraint firstItem="5yY-sq-Umm" firstAttribute="leading" secondItem="6Sl-ep-OME" secondAttribute="leading" constant="16" id="lpA-xl-zNx"/>
+                <constraint firstItem="VLy-SX-f6t" firstAttribute="top" secondItem="6Sl-ep-OME" secondAttribute="top" id="s3E-ra-1Og"/>
             </constraints>
             <size key="customSize" width="440" height="310"/>
             <connections>
+                <outlet property="backgroundIMageView" destination="VLy-SX-f6t" id="UZi-Cd-sc2"/>
                 <outlet property="descriptionContainer" destination="EC3-MB-GTB" id="Bk0-NB-GjF"/>
                 <outlet property="descriptionLabel" destination="Flm-wS-h5F" id="bLx-Qv-KAF"/>
                 <outlet property="photoView" destination="RsZ-KV-rRJ" id="3Dc-2b-BoP"/>
@@ -70,4 +83,7 @@
             <point key="canvasLocation" x="185" y="243"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="nature.jpg" width="2560" height="1600"/>
+    </resources>
 </document>

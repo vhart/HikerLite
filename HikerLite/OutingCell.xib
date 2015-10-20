@@ -42,7 +42,7 @@
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.83921568629999999" green="0.23696027550000001" blue="0.17486025890000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.4823529411764706" green="0.64313725490196072" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="52" id="2md-7N-eVS"/>
                             <constraint firstItem="HO0-p9-MpA" firstAttribute="leading" secondItem="wtp-Ya-K9r" secondAttribute="leading" constant="8" id="CxN-EP-cPJ"/>
