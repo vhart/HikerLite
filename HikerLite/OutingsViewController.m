@@ -53,7 +53,7 @@ static NSString * const selectedOuting = @"selectedOuting";
 
 - (void)setupCreateOutingView {
     self.createOutingView.layer.cornerRadius = 10;
-    self.createOutingView.layer.borderColor = [UIColor redColor].CGColor;
+    self.createOutingView.layer.borderColor = [UIColor blackColor].CGColor;
     self.createOutingView.layer.borderWidth = 1;
     
     self.createOutingName.delegate = self;

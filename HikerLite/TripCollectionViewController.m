@@ -381,15 +381,15 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     
     EntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // create effect
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-    
-    // add effect to an effect view
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = cell.backgroundIMageView.frame;
-    
-    // add the effect view to the image view
-    [cell.backgroundIMageView addSubview:effectView];
+//    // create effect
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+//    
+//    // add effect to an effect view
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+//    effectView.frame = cell.backgroundIMageView.frame;
+//    
+//    // add the effect view to the image view
+//    [cell.backgroundIMageView addSubview:effectView];
     
     if ([self.currentOuting.entriesArray[indexPath.row].mediaType  isEqualToString:@"public.image"]) {
         
