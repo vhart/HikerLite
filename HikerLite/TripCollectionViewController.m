@@ -8,16 +8,17 @@
 
 #import "EntryCell.h"
 #import "HLMapView.h"
-#import "LiquidFloatingActionButton-Swift.h"
 #import "OutingsViewController.h"
 #import "TextEntryViewController.h"
 #import "TripCollectionViewController.h"
+
+#import "LiquidFloatingActionButton-Swift.h"
 
 #import <AFNetworking/AFNetworking.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface TripCollectionViewController () <CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LiquidFloatingActionButtonDataSource, LiquidFloatingActionButtonDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *collectionViewContainer;
 @property (nonatomic) UICollectionView *collectionView;
