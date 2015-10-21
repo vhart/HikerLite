@@ -133,16 +133,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     EntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // create effect
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-    
-    // add effect to an effect view
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = cell.backgroundIMageView.frame;
-    
-    // add the effect view to the image view
-    [cell.backgroundIMageView addSubview:effectView];
-    
     if ([self.viewedMarker.entriesArrayForLocation[indexPath.row].mediaType  isEqualToString:@"public.image"]) {
         
         cell.photoView.hidden = NO;

@@ -18,10 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OCR-oH-rZL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIl-kL-DcG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.48121658499846637" green="0.64186789772727271" blue="0.10961198089327379" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOz-LG-PgA">
                                 <rect key="frame" x="16" y="536" width="200" height="80"/>
@@ -64,16 +67,19 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.4823529411764706" green="0.64313725490196072" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eOz-LG-PgA" secondAttribute="trailing" constant="160" id="0x0-im-sVB"/>
+                            <constraint firstAttribute="bottom" secondItem="OCR-oH-rZL" secondAttribute="bottom" id="6Oa-ha-xPw"/>
                             <constraint firstAttribute="trailing" secondItem="wIl-kL-DcG" secondAttribute="trailing" id="8OR-0e-1oF"/>
                             <constraint firstItem="eOz-LG-PgA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Hhv-MM-Vki"/>
+                            <constraint firstItem="OCR-oH-rZL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I2M-X5-n1a"/>
                             <constraint firstAttribute="bottom" secondItem="wIl-kL-DcG" secondAttribute="bottom" id="JKr-aD-Smm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eOz-LG-PgA" secondAttribute="bottom" constant="-16" id="ZhA-Fl-fO4"/>
                             <constraint firstItem="wIl-kL-DcG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c6u-S1-gcP"/>
                             <constraint firstAttribute="trailing" secondItem="wIl-kL-DcG" secondAttribute="trailing" id="h9c-gh-xlb"/>
                             <constraint firstItem="wIl-kL-DcG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iUC-9i-Lv1"/>
+                            <constraint firstAttribute="trailing" secondItem="OCR-oH-rZL" secondAttribute="trailing" id="mTg-Ke-9D5"/>
+                            <constraint firstItem="OCR-oH-rZL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="okV-6F-ll5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -83,6 +89,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="OCR-oH-rZL" id="KE7-qc-LZr"/>
                         <outlet property="collectionViewContainer" destination="wIl-kL-DcG" id="gf5-Ac-pLk"/>
                         <outlet property="forecastContainer" destination="eOz-LG-PgA" id="wSo-8N-CLL"/>
                         <outlet property="forecastImage" destination="vGB-lv-Kze" id="ILf-BA-vck"/>
@@ -307,4 +314,7 @@
             <point key="canvasLocation" x="1560" y="1025"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="nature.jpg" width="1920" height="1200"/>
+    </resources>
 </document>

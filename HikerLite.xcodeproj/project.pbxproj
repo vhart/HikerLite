@@ -17,7 +17,7 @@
 		3B7D1C2D1BD43E6900406412 /* OutingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C2C1BD43E6900406412 /* OutingCell.m */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C2F1BD43E7B00406412 /* OutingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */; settings = {ASSET_TAGS = (); }; };
 		3B7D1C351BD51CCB00406412 /* OutingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D1C341BD51CCB00406412 /* OutingsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		3B7D1C381BD7000300406412 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C371BD7000200406412 /* nature.jpg */; settings = {ASSET_TAGS = (); }; };
+		3B7D1C3A1BD7B68C00406412 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B7D1C391BD7B68C00406412 /* nature.jpg */; settings = {ASSET_TAGS = (); }; };
 		B7711B1F931201E40D1551B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35CDD57FC026BC52468D2A5 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C76CA15F1BD47B0D00981F39 /* GMSMarker_WithArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C76CA15E1BD47B0D00981F39 /* GMSMarker_WithArray.m */; settings = {ASSET_TAGS = (); }; };
 		C7A6EAC91BD2E59E0064BD4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAC81BD2E59E0064BD4A /* main.m */; };
@@ -69,7 +69,7 @@
 		3B7D1C2E1BD43E7B00406412 /* OutingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutingCell.xib; sourceTree = "<group>"; };
 		3B7D1C331BD51CCB00406412 /* OutingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutingsViewController.h; sourceTree = "<group>"; };
 		3B7D1C341BD51CCB00406412 /* OutingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutingsViewController.m; sourceTree = "<group>"; };
-		3B7D1C371BD7000200406412 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
+		3B7D1C391BD7B68C00406412 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
 		8454CEDF3E921FC6E6CE073A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A35CDD57FC026BC52468D2A5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76CA15C1BD4762D00981F39 /* GMSMarker_GJEntriesArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSMarker_GJEntriesArray.h; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		3B7D1C201BD2F7CB00406412 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3B7D1C371BD7000200406412 /* nature.jpg */,
+				3B7D1C391BD7B68C00406412 /* nature.jpg */,
 				3B7D1C211BD2F7E900406412 /* vid.m4v */,
 				3B7D1C221BD2F7E900406412 /* vid2.m4v */,
 			);
@@ -368,10 +368,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7D1C3A1BD7B68C00406412 /* nature.jpg in Resources */,
 				3B7D1C1C1BD2F75F00406412 /* EntryCell.xib in Resources */,
 				C7A6EAD71BD2E59E0064BD4A /* LaunchScreen.storyboard in Resources */,
 				3B7D1C231BD2F7E900406412 /* vid.m4v in Resources */,
-				3B7D1C381BD7000300406412 /* nature.jpg in Resources */,
 				C7A6EAD41BD2E59E0064BD4A /* Assets.xcassets in Resources */,
 				3B7D1C241BD2F7E900406412 /* vid2.m4v in Resources */,
 				3B7D1C2F1BD43E7B00406412 /* OutingCell.xib in Resources */,

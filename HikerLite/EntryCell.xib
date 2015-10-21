@@ -25,12 +25,12 @@
                                 <rect key="frame" x="16" y="16" width="376" height="166"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.31999799922892924" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.76862745099999996" green="0.89411764709999997" blue="0.59215686270000001" alpha="0.40999999999999998" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.97365871064807052" blue="0.73685571627846436" alpha="0.42836782094594594" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Flm-wS-h5F" secondAttribute="trailing" constant="16" id="0Gv-7U-Ujx"/>
                             <constraint firstAttribute="bottom" secondItem="Flm-wS-h5F" secondAttribute="bottom" constant="16" id="IER-qy-LHI"/>

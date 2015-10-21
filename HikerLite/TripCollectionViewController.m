@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *forecastImage;
 @property (weak, nonatomic) IBOutlet UIView *forecastContainer;
 @property (weak, nonatomic) IBOutlet UILabel *forecastTemp;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
@@ -45,6 +46,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupBackground];
     
     [self setupCollectionView];
     
@@ -75,6 +78,18 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 
 #pragma mark - Setup methods
 
+- (void)setupBackground {
+    // create blur effect
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    // add effect to an effect view
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = self.backgroundImageView.frame;
+    
+    // add the effect view to the image view
+    [self.backgroundImageView addSubview:effectView];
+}
+
 - (void)setupCollectionView {
     
     // collection view layout setup
@@ -86,7 +101,8 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.0]];
+    self.collectionView.opaque = NO;
     
     // register cell prototype
     [self.collectionView registerNib:[UINib nibWithNibName:@"EntryCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
@@ -305,7 +321,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     NSLog(@"before open self.view.frame: %@", NSStringFromCGRect(self.view.frame));
     NSLog(@"before open self.forecastContainer.frame: %@", NSStringFromCGRect(self.forecastContainer.frame));
     if (!CGRectEqualToRect(newFrame, self.forecastContainer.frame)) {
-        [UIView animateWithDuration:1 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
             self.forecastContainer.frame = newFrame;
         }];
     }
@@ -319,7 +335,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     NSLog(@"before close self.view.frame: %@", NSStringFromCGRect(self.view.frame));
     NSLog(@"before close self.forecastContainer.frame: %@", NSStringFromCGRect(self.forecastContainer.frame));
     if (!CGRectEqualToRect(newFrame, self.forecastContainer.frame)) {
-        [UIView animateWithDuration:1 animations:^{
+        [UIView animateWithDuration:0.75 animations:^{
             self.forecastContainer.frame = newFrame;
         }];
     }
@@ -380,16 +396,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     EntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-//    // create effect
-//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-//    
-//    // add effect to an effect view
-//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-//    effectView.frame = cell.backgroundIMageView.frame;
-//    
-//    // add the effect view to the image view
-//    [cell.backgroundIMageView addSubview:effectView];
     
     if ([self.currentOuting.entriesArray[indexPath.row].mediaType  isEqualToString:@"public.image"]) {
         
