@@ -15,6 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIView *videoView;
 @property (weak, nonatomic) IBOutlet UIView *descriptionContainer;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundIMageView;
 
 @end

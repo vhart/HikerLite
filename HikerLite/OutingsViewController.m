@@ -140,7 +140,7 @@ static NSString * const selectedOuting = @"selectedOuting";
     
     OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"Changed selected outing to %ld", indexPath.row);
+    NSLog(@"Changed selected outing to %ld", (long)indexPath.row);
     cell.checkmark.hidden = NO;
 }
 
@@ -148,7 +148,7 @@ static NSString * const selectedOuting = @"selectedOuting";
     
     OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"Changed selected outing to %ld", indexPath.row);
+    NSLog(@"Changed selected outing to %ld", (long)indexPath.row);
     cell.checkmark.hidden = YES;
 }
 

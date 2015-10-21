@@ -236,7 +236,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
             [objects sortedArrayUsingDescriptors:@[descriptor]];
             
             self.currentOuting = objects[self.selectedOuting];
-            NSLog(@"entries count: %ld", self.currentOuting.entriesArray.count);
+            NSLog(@"entries count: %ld", (unsigned long)self.currentOuting.entriesArray.count);
             [self.currentOuting.entriesArray removeObjectIdenticalTo:[NSNull null]];
             [self.collectionView reloadData];
             
@@ -262,7 +262,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         self.selectedOuting = [[[NSUserDefaults standardUserDefaults] valueForKey:selectedOuting] integerValue];
     }
     
-    NSLog(@"self.selectedOuting: %ld", self.selectedOuting);
+    NSLog(@"self.selectedOuting: %ld", (long)self.selectedOuting);
 }
 
 #pragma mark - LiquidFloatingActionButtonDataSource
