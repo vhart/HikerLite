@@ -302,7 +302,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
     var baseLiquid: LiquittableCircle?
     var engine:     SimpleCircleLiquidEngine?
     var bigEngine:  SimpleCircleLiquidEngine?
-    var enableShadow = true
+    var enableShadow = false
 
     private var openingCells: [LiquidFloatingCell] = []
     private var keyDuration: CGFloat = 0
