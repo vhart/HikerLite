@@ -40,17 +40,17 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:40.744
                                                             longitude:-73.938
-                                                                 zoom:12];
+                                                                 zoom:11];
     self.mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.mapView_.myLocationEnabled = YES;
     //self.viewForMap = self.mapView_;
     self.view = self.mapView_;
     // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(40.744,-73.938);
-    //    marker.title = @"Sydney";
-    //    marker.snippet = @"Australia";
-    marker.map = self.mapView_;
+//    GMSMarker *marker = [[GMSMarker alloc] init];
+//    marker.position = CLLocationCoordinate2DMake(40.744,-73.938);
+//    //    marker.title = @"Sydney";
+//    //    marker.snippet = @"Australia";
+//    marker.map = self.mapView_;
     
     for (GMSMarker_WithArray *marker in self.markersArray) {
         marker.map = self.mapView_;

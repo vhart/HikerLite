@@ -31,6 +31,7 @@
 		C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EAFE1BD2EBD80064BD4A /* GJEntry.m */; };
 		C7A6EB021BD2EECE0064BD4A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */; };
 		C7A6EB0F1BD409E90064BD4A /* GMSMarker+GJEntryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EB0E1BD409E90064BD4A /* GMSMarker+GJEntryArray.m */; };
+		C7F12EA01BD7099800E775C1 /* HLMapCollectionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F12E9F1BD7099800E775C1 /* HLMapCollectionDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		C7A6EB011BD2EECE0064BD4A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C7A6EB0D1BD409E90064BD4A /* GMSMarker+GJEntryArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMarker+GJEntryArray.h"; sourceTree = "<group>"; };
 		C7A6EB0E1BD409E90064BD4A /* GMSMarker+GJEntryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMarker+GJEntryArray.m"; sourceTree = "<group>"; };
+		C7F12E9E1BD7099800E775C1 /* HLMapCollectionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMapCollectionDetailViewController.h; sourceTree = "<group>"; };
+		C7F12E9F1BD7099800E775C1 /* HLMapCollectionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMapCollectionDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 				3B7D1C191BD2F75F00406412 /* EntryCell.xib */,
 				3B7D1C281BD4249700406412 /* HLMapView.h */,
 				3B7D1C291BD4249700406412 /* HLMapView.m */,
+				C7F12E9E1BD7099800E775C1 /* HLMapCollectionDetailViewController.h */,
+				C7F12E9F1BD7099800E775C1 /* HLMapCollectionDetailViewController.m */,
 				3B7D1C1D1BD2F79E00406412 /* TripCollectionViewController.h */,
 				3B7D1C1E1BD2F79E00406412 /* TripCollectionViewController.m */,
 				3B7D1C251BD3EE4500406412 /* TextEntryViewController.h */,
@@ -447,6 +452,7 @@
 				C7A6EAFF1BD2EBD80064BD4A /* GJOutings.m in Sources */,
 				3B7D1C271BD3EE4500406412 /* TextEntryViewController.m in Sources */,
 				3B7D1C2D1BD43E6900406412 /* OutingCell.m in Sources */,
+				C7F12EA01BD7099800E775C1 /* HLMapCollectionDetailViewController.m in Sources */,
 				C7A6EB0F1BD409E90064BD4A /* GMSMarker+GJEntryArray.m in Sources */,
 				C7A6EACC1BD2E59E0064BD4A /* AppDelegate.m in Sources */,
 				C7A6EB001BD2EBD80064BD4A /* GJEntry.m in Sources */,
