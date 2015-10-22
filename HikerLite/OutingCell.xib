@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="outingCellIdentifier" rowHeight="90" id="zXO-wh-J1J" customClass="OutingCell">
+        <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="outingCellIdentifier" rowHeight="90" id="zXO-wh-J1J" customClass="OutingCell">
             <rect key="frame" x="0.0" y="0.0" width="398" height="90"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zXO-wh-J1J" id="MQK-Z5-QG4">
@@ -17,16 +17,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-Ya-K9r">
                         <rect key="frame" x="0.0" y="4" width="398" height="81"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HO0-p9-MpA">
-                                <rect key="frame" x="8" y="19" width="44" height="44"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="9Sw-vh-zLV"/>
-                                    <constraint firstAttribute="height" constant="44" id="GpL-y5-4BD"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outing Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIH-e2-V9R">
-                                <rect key="frame" x="68" y="30" width="266" height="21"/>
+                                <rect key="frame" x="16" y="30" width="318" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,12 +37,10 @@
                         <color key="backgroundColor" red="0.4823529411764706" green="0.64313725490196072" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="52" id="2md-7N-eVS"/>
-                            <constraint firstItem="HO0-p9-MpA" firstAttribute="leading" secondItem="wtp-Ya-K9r" secondAttribute="leading" constant="8" id="CxN-EP-cPJ"/>
                             <constraint firstAttribute="height" constant="81" id="F9v-bd-HeQ"/>
                             <constraint firstItem="abL-e6-UNx" firstAttribute="leading" secondItem="fIH-e2-V9R" secondAttribute="trailing" constant="16" id="Ion-HD-Glc"/>
-                            <constraint firstItem="fIH-e2-V9R" firstAttribute="leading" secondItem="HO0-p9-MpA" secondAttribute="trailing" constant="16" id="TQW-RE-Lnx"/>
                             <constraint firstAttribute="trailing" secondItem="abL-e6-UNx" secondAttribute="trailing" constant="16" id="W8r-jp-tGY"/>
-                            <constraint firstItem="HO0-p9-MpA" firstAttribute="centerY" secondItem="wtp-Ya-K9r" secondAttribute="centerY" id="k1U-QD-fvi"/>
+                            <constraint firstItem="fIH-e2-V9R" firstAttribute="leading" secondItem="wtp-Ya-K9r" secondAttribute="leading" constant="16" id="ehh-xy-fJy"/>
                             <constraint firstItem="abL-e6-UNx" firstAttribute="centerY" secondItem="wtp-Ya-K9r" secondAttribute="centerY" id="nWZ-Bh-n7N"/>
                             <constraint firstItem="fIH-e2-V9R" firstAttribute="centerY" secondItem="wtp-Ya-K9r" secondAttribute="centerY" id="puv-pI-LYa"/>
                             <constraint firstItem="fIH-e2-V9R" firstAttribute="top" secondItem="wtp-Ya-K9r" secondAttribute="top" constant="16" id="yNe-Dc-Gyx"/>
@@ -81,11 +71,11 @@
                 </variation>
             </tableViewCellContentView>
             <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="checkmark" destination="abL-e6-UNx" id="y37-ts-Flt"/>
                 <outlet property="containerView" destination="wtp-Ya-K9r" id="q78-aA-HY7"/>
                 <outlet property="name" destination="fIH-e2-V9R" id="ZyV-Mz-uHu"/>
-                <outlet property="previewIcon" destination="HO0-p9-MpA" id="HKa-eF-W2G"/>
             </connections>
             <point key="canvasLocation" x="255" y="256"/>
         </tableViewCell>

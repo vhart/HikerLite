@@ -10,4 +10,6 @@
 
 @interface OutingsViewController : UIViewController
 
+@property (nonatomic) NSInteger selectedOuting;
+
 @end

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *createOutingView;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UITextField *createOutingName;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
@@ -30,6 +31,10 @@ static NSString * const selectedOuting = @"selectedOuting";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.opaque = NO;
+    
+    [self setupBackground];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss:)];
 
     [self setupCells];
@@ -40,6 +45,18 @@ static NSString * const selectedOuting = @"selectedOuting";
 }
 
 #pragma mark - Setup methods
+
+- (void)setupBackground {
+    // create blur effect
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    // add effect to an effect view
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = self.backgroundImageView.frame;
+    
+    // add the effect view to the image view
+    [self.backgroundImageView addSubview:effectView];
+}
 
 - (void)setupCells {
     
@@ -122,35 +139,32 @@ static NSString * const selectedOuting = @"selectedOuting";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSLog(@"self.selectedOuting = %ld", (long)self.selectedOuting);
+    
     OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     cell.name.text = [self.outings[indexPath.row] outingName];
+    if (self.selectedOuting == indexPath.row) {
+        
+    } else {
+        
+    }
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 50;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[NSUserDefaults standardUserDefaults] setValue:@(indexPath.row) forKey:selectedOuting];
     
-    OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    self.selectedOuting = indexPath.row;
+    [[NSUserDefaults standardUserDefaults] setValue:@(self.selectedOuting) forKey:selectedOuting];
+    NSLog(@"Changed selected outing to %ld", (long)self.selectedOuting);
     
-    NSLog(@"Changed selected outing to %ld", (long)indexPath.row);
-    cell.checkmark.hidden = NO;
 }
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    OutingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    NSLog(@"Changed selected outing to %ld", (long)indexPath.row);
-    cell.checkmark.hidden = YES;
-}
-
 
 @end

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UITextView *entryTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardOffsetConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
@@ -22,11 +23,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self setupBackground];
 
     self.containerView.layer.cornerRadius = 10;
+    self.containerView.layer.borderWidth = 1;
+    self.containerView.layer.borderColor = [UIColor colorWithRed:112/255.0 green:142/255.0 blue:50/255.0 alpha:1].CGColor;
+    
     [self.entryTextView becomeFirstResponder];
     
     [self registerForKeyboardNotifications];
+}
+
+- (void)setupBackground {
+    // create blur effect
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    // add effect to an effect view
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = self.backgroundImageView.frame;
+    
+    // add the effect view to the image view
+    [self.backgroundImageView addSubview:effectView];
 }
 
 // Setting up keyboard notifications.

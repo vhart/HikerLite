@@ -186,8 +186,6 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         self.forecastContainer.frame = newFrame;
     }];
     
-    
-     
 }
 
 - (void)setupNotifications {
@@ -209,16 +207,16 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     
     NSString *stringURL = [NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%f,%f", apiKey,self.latitude, self.longitude];
-    NSLog(@"%@", stringURL);
+    //NSLog(@"%@", stringURL);
     
     [manager GET:stringURL  parameters: nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject)
      {
          
          NSTimeInterval now = [responseObject[@"currently"][@"time"] doubleValue];
-         NSLog(@"now: %f", now);
+         //NSLog(@"now: %f", now);
          
          NSDictionary *hourlyData = responseObject[@"hourly"][@"data"];
-         NSLog(@"hourly data: %@", hourlyData);
+         //NSLog(@"hourly data: %@", hourlyData);
          
          for (NSDictionary *data in hourlyData) {
              NSTimeInterval dataTime = [data[@"time"] doubleValue];
@@ -230,7 +228,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
                  
                  self.forecastTemp.text = [NSString stringWithFormat:@"%@%@", data[@"temperature"], @"\u00B0"];
                  
-                 NSLog(@"dataTime: %f, forecast: %@", dataTime, self.forecast);
+                 //NSLog(@"dataTime: %f, forecast: %@", dataTime, self.forecast);
                  break;
                  
              }
@@ -364,7 +362,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
 // Layout: Set Edges
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    // return UIEdgeInsetsMake(0,8,0,8);  // top, left, bottom, right
+    
     return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
 }
 
@@ -464,7 +462,7 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         cell.descriptionContainer.layer.cornerRadius = 10;
         cell.descriptionContainer.layer.borderWidth = 1;
-        // pick a better green
+
         cell.descriptionContainer.layer.borderColor = [UIColor colorWithRed:112/255.0 green:142/255.0 blue:50/255.0 alpha:1].CGColor;
         
         cell.descriptionLabel.text = [self.currentOuting.entriesArray[indexPath.row] textMedia];
@@ -534,6 +532,11 @@ static NSString * const apiKey = @"53bac750b0228783a50a48bda0d2d1ce";
         
         HLMapView *vc = (HLMapView *) [[segue destinationViewController] topViewController];
         vc.currentOuting = self.currentOuting;
+        
+    } else if ([segue.identifier isEqualToString:@"outingsSegue"]) {
+        
+        OutingsViewController *vc = (OutingsViewController *) [[segue destinationViewController] topViewController];
+        vc.selectedOuting = self.selectedOuting;
         
     }
 }
